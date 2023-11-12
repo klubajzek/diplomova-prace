@@ -1,0 +1,56 @@
+@use "./variables" as tokens;
+
+@mixin link-reseter {
+  cursor: pointer;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: none;
+  text-decoration: none;
+}
+
+@mixin text-base {
+  letter-spacing: tokens.$default-letter-spacing;
+  line-height: tokens.$default-line-height;
+  font-weight: tokens.$weight-font-regular;
+  font-size: tokens.$size-font-text-base;
+  color: tokens.$color-font-base;
+
+  @media (min-width: 1200px) {
+    font-size: tokens.$size-font-text-bigger;
+  }
+}
+
+.btn {
+  background-color: tokens.$color-font-base !important;
+  color: white !important;
+  border-color: tokens.$color-font-base !important;
+
+  &:hover {
+    background-color: white !important;
+    color: tokens.$color-font-base !important;
+  }
+}
+
+.h1 {
+  margin: 0 0 2rem 0;
+  text-align: center;
+  font-size: 2rem;
+
+  @media (min-width: 991px) {
+    font-size: 2.5rem;
+  }
+
+  @media (min-width: 1200px) {
+    font-size: 3rem;
+  }
+
+
+  @media (min-width: 1500px) {
+    font-size: 3.6rem;
+  }
+
+
+}

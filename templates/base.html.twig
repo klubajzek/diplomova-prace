@@ -2,14 +2,50 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}{% endblock %} - {{ 'base.title'|trans }}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         {% block stylesheets %}
+{#            <link rel="stylesheet" href="{{ asset('assets/styles/css/global.css') }}?v={{ filemtime('assets/styles/css/global.css') }}">#}
+            <link rel="stylesheet" href="{{ asset('assets/styles/css/global.css') }}">
+{#            <link rel="stylesheet" href="{{ asset('assets/styles/css/bootstrap.css') }}?v={{ filemtime('assets/styles/css/bootstrap.css') }}">#}
+            <link rel="stylesheet" href="{{ asset('assets/styles/css/bootstrap.css') }}">
         {% endblock %}
 
         {% block javascripts %}
+{#            <script type="text/javascript" src="{{ asset('assets/js/app.js') }}?v={{ filemtime('assets/js/app.js') }}"></script>#}
+            <script type="text/javascript" src="{{ asset('assets/js/app.js') }}"></script>
         {% endblock %}
     </head>
+    <header>
+        <div class="container">
+            <div class="nav">
+                <div class="navigation">
+                    <div class="nav-item">
+                        <a href="{{ path('app_homepage') }}">{{ 'base.homepage'|trans }}</a>
+                    </div>
+                </div>
+                <div class="row navigation--right">
+                    <div class="nav-item">
+                        {% if app.user %}
+                            <span>{{ app.user.fullName  }}</span>
+                            <a class="btn btn-primary" href="{{ path('app_login') }}">
+                                {{ 'base.account'|trans }}
+                            </a>
+                        {% else %}
+                            <a class="btn btn-primary" href="{{ path('app_login') }}">
+                                {{ 'base.login'|trans }}
+                            </a>
+                        {% endif %}
+                    </div>
+{#                    <div class="nav-item">#}
+{#                        <a class="btn btn-secondary" href="{{ path('app_register') }}">#}
+{#                            {{ 'base.register'|trans }}#}
+{#                        </a>#}
+{#                    </div>#}
+                </div>
+            </div>
+        </div>
+    </header>
     <body>
         {% block body %}{% endblock %}
     </body>

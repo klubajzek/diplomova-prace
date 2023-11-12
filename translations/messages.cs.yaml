@@ -1,0 +1,17 @@
+base:
+  title: Diplomová práce
+  login: Přihlásit se
+  register: Registrovat se
+  homepage: Úvod
+  account: Účet
+homepage:
+  title: Úvodní stránka
+registration:
+  error:
+    passwordLimit: Minimum znaků pro heslo je 6!
+login:
+  name: Přihlásit se
+  title: Přihlášení
+  email: Přezdívka
+  password: Heslo
+  button: Přihlásit se
