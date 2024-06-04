@@ -5,15 +5,13 @@
         <title>{% block title %}{% endblock %} - {{ 'base.title'|trans }}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         {% block stylesheets %}
-{#            <link rel="stylesheet" href="{{ asset('assets/styles/css/global.css') }}?v={{ filemtime('assets/styles/css/global.css') }}">#}
-            <link rel="stylesheet" href="{{ asset('assets/styles/css/global.css') }}">
-{#            <link rel="stylesheet" href="{{ asset('assets/styles/css/bootstrap.css') }}?v={{ filemtime('assets/styles/css/bootstrap.css') }}">#}
-            <link rel="stylesheet" href="{{ asset('assets/styles/css/bootstrap.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/styles/css/global.css') }}?v={{ filemtime('assets/styles/css/global.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/styles/css/bootstrap.css') }}?v={{ filemtime('assets/styles/css/bootstrap.css') }}">
         {% endblock %}
 
         {% block javascripts %}
-{#            <script type="text/javascript" src="{{ asset('assets/js/app.js') }}?v={{ filemtime('assets/js/app.js') }}"></script>#}
-            <script type="text/javascript" src="{{ asset('assets/js/app.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('assets/js/app.js') }}?v={{ filemtime('assets/js/app.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-3.7.1.min.js') }}"></script>
         {% endblock %}
     </head>
     <header>
@@ -23,6 +21,11 @@
                     <div class="nav-item">
                         <a href="{{ path('app_homepage') }}">{{ 'base.homepage'|trans }}</a>
                     </div>
+                    {% if app.user %}
+                        <div class="nav-item">
+                            <a href="{{ path('app_game_start') }}">{{ 'base.game'|trans }}</a>
+                        </div>
+                    {% endif %}
                 </div>
                 <div class="row navigation--right">
                     <div class="nav-item">

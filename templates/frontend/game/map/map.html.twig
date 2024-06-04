@@ -1,0 +1,21 @@
+{% extends 'frontend/game/game_base.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script type="text/javascript" src="{{ asset('assets/js/map.js') }}?v={{ filemtime('assets/js/map.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="map">
+        </div>
+        <div class="container">
+                {% for item in game.gameProfiles %}
+                    <div class="city-position-{{ item.position }} city-occupied">
+                    </div>
+                {% endfor %}
+        </div>
+    </section>
+
+{% endblock %}

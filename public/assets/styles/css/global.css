@@ -29,6 +29,158 @@
   }
 }
 
+.btn {
+  background-color: black !important;
+  color: white !important;
+  border-color: black !important;
+}
+
+.btn:hover {
+  background-color: white !important;
+  color: black !important;
+}
+
+.h1, .intro__title, .page__title {
+  margin: 0 0 2rem 0;
+  text-align: center;
+  font-size: 2rem;
+}
+
+@media (min-width: 991px) {
+  .h1, .intro__title, .page__title {
+    font-size: 2.5rem;
+  }
+}
+@media (min-width: 1200px) {
+  .h1, .intro__title, .page__title {
+    font-size: 3rem;
+  }
+}
+@media (min-width: 1500px) {
+  .h1, .intro__title, .page__title {
+    font-size: 3.6rem;
+  }
+}
+.map {
+  background-image: url(../../images/map/mapa-16-9.png);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: -1;
+}
+@media screen and (aspect-ratio: 16/9) {
+  .map {
+    background-image: url(../../images/map/mapa-16-9.png) !important;
+  }
+}
+@media screen and (aspect-ratio: 16/10) {
+  .map {
+    background-image: url(../../images/map/mapa-16-10.png) !important;
+  }
+}
+@media screen and (aspect-ratio: 19/9) {
+  .map {
+    background-image: url(../../images/map/mapa-19-9.png) !important;
+  }
+}
+@media screen and (aspect-ratio: 4/3) {
+  .map {
+    background-image: url(../../images/map/mapa-4-3.png) !important;
+  }
+}
+.map__img {
+  height: 100%;
+  width: 100%;
+}
+
+.city-position {
+  border: 3px solid black;
+  width: 5rem;
+  height: 5rem;
+  position: absolute;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.city-position-1 {
+  top: 20%;
+  left: 46%;
+  transform: translateX(-5%) translateY(-50%);
+}
+.city-position-2 {
+  top: 50%;
+  left: 64%;
+  transform: translateX(-14%) translateY(-72%);
+}
+.city-position-3 {
+  top: 79%;
+  left: 52%;
+  transform: translateX(-79%) translateY(-50%);
+}
+.city-position-4 {
+  top: 7%;
+  left: 22%;
+  transform: translateX(-7%) translateY(-22%);
+}
+.city-position-5 {
+  top: 42%;
+  left: 40%;
+  transform: translateX(-42%) translateY(-40%);
+}
+.city-position-6 {
+  top: 54%;
+  left: 64%;
+  transform: translateX(-54%) translateY(-64%);
+}
+.city-position-7 {
+  top: 47%;
+  left: 89%;
+  transform: translateX(-47%) translateY(-89%);
+}
+.city-position-8 {
+  top: 64%;
+  left: 8%;
+  transform: translateX(-64%) translateY(-8%);
+}
+.city-position-9 {
+  top: 32%;
+  left: 8%;
+  transform: translateX(-32%) translateY(-8%);
+}
+.city-position-10 {
+  top: 88%;
+  left: 73%;
+  transform: translateX(-88%) translateY(-73%);
+}
+
+.city-occupied {
+  background-image: url(../../images/background-old.jpg);
+  position: fixed;
+  width: 5rem;
+  height: 5rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: -1;
+}
+
+.detail-background {
+  background-image: url(../../images/background.jpg);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: -1;
+}
+
 header {
   background-color: #6fa005;
   padding: 2rem 0;

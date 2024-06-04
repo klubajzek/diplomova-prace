@@ -3,6 +3,7 @@
 namespace App\Entity\User;
 
 use ApiPlatform\Metadata\ApiResource;
+use App\Entity\Game\GameProfile;
 use App\Repository\User\UserRepository;
 use App\Traits\Entity\Datetimeable;
 use App\Traits\Entity\Deactivationable;
@@ -40,6 +41,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
+
+    #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
+    private ?GameProfile $gameProfile = null;
 
     public function getFullName(): string
     {
@@ -172,6 +176,28 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsVerified(bool $isVerified): static
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    public function getGameProfile(): ?GameProfile
+    {
+        return $this->gameProfile;
+    }
+
+    public function setGameProfile(?GameProfile $gameProfile): static
+    {
+        // unset the owning side of the relation if necessary
+        if ($gameProfile === null && $this->gameProfile !== null) {
+            $this->gameProfile->setUser(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($gameProfile !== null && $gameProfile->getUser() !== $this) {
+            $gameProfile->setUser($this);
+        }
+
+        $this->gameProfile = $gameProfile;
 
         return $this;
     }

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 trait Deactivationable
 {
     #[ORM\Column(type: Types::BOOLEAN)]
-    private bool $isDeactivated = true;
+    private bool $isDeactivated = false;
 
     public function isDeactivated(): bool
     {
@@ -17,11 +17,11 @@ trait Deactivationable
 
     public function deactivate(): void
     {
-        $this->isDeactivated = false;
+        $this->isDeactivated = true;
     }
 
     public function activate(): void
     {
-        $this->isDeactivated = true;
+        $this->isDeactivated = false;
     }
 }

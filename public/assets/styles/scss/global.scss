@@ -1,6 +1,9 @@
 @use "./shared" as shared;
 @use "./variables" as tokens;
 
+@import "game/map";
+@import "game/detail";
+
 header {
   background-color: tokens.$color-green;
   padding: 2rem 0;

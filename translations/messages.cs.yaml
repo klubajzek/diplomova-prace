@@ -4,6 +4,7 @@ base:
   register: Registrovat se
   homepage: Úvod
   account: Účet
+  game: Hrát
 homepage:
   title: Úvodní stránka
 registration:
@@ -15,3 +16,14 @@ login:
   email: Přezdívka
   password: Heslo
   button: Přihlásit se
+game:
+  start:
+    title: Hra
+  detail: Vesnice
+
+form:
+  game:
+    code: Kód hry
+    find: Najít hru
+    new: Nová hra
+    random: Náhodná existující hra
