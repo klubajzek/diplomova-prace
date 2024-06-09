@@ -158,7 +158,7 @@
 }
 
 .city-occupied {
-  background-image: url(../../images/background-old.jpg);
+  background-image: url(../../images/village.png);
   position: fixed;
   width: 5rem;
   height: 5rem;
@@ -166,6 +166,45 @@
   background-repeat: no-repeat;
   background-position: center;
   z-index: -1;
+}
+
+.stone {
+  background-image: url(../../images/stone.png);
+  position: fixed;
+  width: 5rem;
+  height: 5rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: -1;
+  left: 90%;
+  top: 14%;
+}
+
+.wood {
+  background-image: url(../../images/tree.png);
+  position: fixed;
+  width: 5rem;
+  height: 5rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: -1;
+  left: 49%;
+  top: 70%;
+}
+
+.wheat {
+  background-image: url(../../images/wheat.png);
+  position: fixed;
+  width: 5rem;
+  height: 5rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: -1;
+  left: 10%;
+  top: 80%;
 }
 
 .detail-background {

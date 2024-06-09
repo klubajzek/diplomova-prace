@@ -13,6 +13,12 @@ class GameMapController extends AbstractController
 {
     public function __invoke(Request $request, Game $game): Response
     {
+        $user = $this->getUser();
+
+        if ($user === null) {
+            return $this->redirectToRoute('app_login');
+        }
+
         return $this->render('frontend/game/map/map.html.twig', [
             'game' => $game
         ]);
