@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'homepage.title'|trans }}{% endblock %}
+
+{% block body %}
+    <section class="intro">
+        <div class="container">
+            <h1 class="intro__title">O aplikaci</h1>
+            <div class="intro__info">
+                <div>
+                    <h2>Základní informace</h2>
+                    Tato webová aplikace je vytvořena vrámci diplomové práce na téma <strong>"Gamifikace ve vzdělávání"</strong>.<br>
+                    Diplomová práce je zpracována v rámci studia na Fakultě Informatiky a Managementu Univerzity Hradec Králové.<br>
+                    Aplikace je určena pro studenty, kteří si chtějí procvičit své znalosti zábavnou formou. Tato aplikace je určena pro děti ve věku 6-8 let.<br>
+                    Aplikace je vytvořena v programovacím jazyce PHP s využitím frameworku Symfony. Aplikace je dostupná na adrese: <a href="{{ path('app_homepage') }}">{{ absolute_url(path('app_homepage')) }}</a>.<br>
+                    Pro hraní je nutné se přihlásit/zaregistrovat.
+
+                    <h2>Příběh provázející aplikaci</h2>
+
+                    Aplikace se odehrává v dávných dobách. Vazalové byly vysláni králem do nové země zvané Palmonie, kde mají za úkol postavit nové osady, poté vesnice až nakonec města. Nebudou to ale mít jednoduché, musí nejdříve získat všechny suroviny, poté postavit budovy, starat se o své poddané i o celou vesnici. Do této země ale nemíří samy, po cestě potkávájí řadu dalších karavan. Tyto karavany se snaží také dostat do Palmonie, aby zde mohli založit co nejvíce prosperující vesnice. Proč byla Palmonie tak dlouho bez obyvatel?
+                    <br>
+                    Zemi Palmonii se snažilo obsadit již spoustu království od severu až po jih. Ale žádnému z vazalů se nepovedlo v této neprobádané krajině, plné nebezpečí a neúrodnosti usadit. Naštěstí nynější král Vildebald VI. který vysílá nové družiny vazalů do této země nejdříve nechal celou zemi prozkoumat svými špehy a tak zajistil nejlepší místa pro zakládání nových vesnic. Tato místa mají poblíž divoce vytvořená obilná pole. Dále také se kus od nich nalézá les a naleziště kamenů.
+                    <br>
+                    Ikdyž se říká, že tato země je nehostinná a neobydlená, stejně tu najdeme pár odvážlivců, kteří v této zemi žijí. Každý z nich si zabral vlastní kus půdy a vlastní jedenu ze základních surovin. Prozatím, když zde byly samy, nedělalo jim problém, si mezi sebou vyměňovat tyto suroviny, ale když se dozvěděli, že král Vildebald VI. vysílá nové družiny, které mají tuto zemi osídlit, tak z toho šťastní nebyly. Ba naopak se domluvili, že jim nedají žádné tyto suroviny. Ale i s tímto král počítal, proto za nimi vyslal jednu ze svých družin, kdy se s nimi domluvil, aby umožnili přístup jeho nových osad k těmto surovinám. Na oplátku zaplatil lidem, kteří se starali o divoká pole s obilím nemalý obnos zlaťáků. Lidé, kteří žili u lesa a u improvizovaného kamenolomu se ale nedali tak jednoduše uplatit, proto se nakonec dohodli na tom, aby zde mohli vesnice získávat suroviny, tak jim za to musí věnovat jídlo. Také všichni domorodci z Palmonie řekli, že si dané suroviny musí obstarat sami, že jim nebudou nijak pomáhat.
+                    <br>
+                    Již uplynulo 5 let, kdy král stále vysílal nové a nové družiny, ale žádné se nepodařilo na místě uchytit. Už to chtěl také vzdát, ale jeden z vazalů, jménem uživatel, ho svou odvahou, horlivostí a nebojácnosti přiměl k tomu, aby mu umožnil jít také do Palmonie. Vzal si sebou své nejvěrnější poddané a vyrazil. Král ho ještě před všemi nebezpečími v této zemi varoval, ale uživatel to bral na lehkou váhu a jen se jim zasmál. Po dlouhé cestě, kdy byla karavana uživatele napadena bandity a on sám si zachránil jen svůj holý život, se dostává do země Palmonie. Zde vylezl na vysoký kopec a rozhlédl se, nemohl věřit svým očím, jakou krásu viděl kolem sebe. Byla tam taková lidmi nedotčená příroda, do které se hned zamiloval. Po chvilce pozorování ho napadlo, co budu dělat dál?
+
+                    <h2>Jak hrát?</h2>
+                    <ol>
+                        <li>Přihlásit se / Zaregistrovat</li>
+                        <li>Vybrat si, pokud chcete začínat na náhodné mapě, či se přihlásit do již existující hry</li>
+                        <li>Vybrat si místo na mapě, kde se bude nacházet Vaše vesnice</li>
+                        <li>Prohlédnout si budovy a mapu</li>
+                        <li>Kliknout na obrázek obílí</li>
+                        <li>Odehrát minihru</li>
+                        <li>Hrát a procvičovat, jak dlouho je libo :)</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

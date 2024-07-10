@@ -6,11 +6,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class HomepageController extends AbstractController
+class GDPRController extends AbstractController
 {
-    #[Route(path: '/', name: 'app_homepage')]
+    #[Route(path: '/ochrana-osobnich-udaju/', name: 'app_gdpr')]
     public function __invoke(): Response
     {
-        return $this->render('frontend/homepage/homepage.html.twig');
+        return $this->render('frontend/pages/gdpr.html.twig');
     }
 }

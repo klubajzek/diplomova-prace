@@ -17,20 +17,31 @@
     <header>
         <div class="container">
             <div class="nav">
+                <div class="logo">
+                    <a href="{{ path('app_homepage') }}">
+                        <img src="{{ asset('assets/images/uhk-logo.png') }}" alt="Logo">
+                    </a>
+                </div>
                 <div class="navigation">
-                    <div class="nav-item">
+                    <div class="nav-item {% if 'homepage' in app.current_route %}selected{% endif %}">
                         <a href="{{ path('app_homepage') }}">{{ 'base.homepage'|trans }}</a>
+                    </div>
+                    <div class="nav-item {% if 'gdpr' in app.current_route %}selected{% endif %}">
+                        <a href="{{ path('app_gdpr') }}">{{ 'base.gdpr'|trans }}</a>
+                    </div>
+                    <div class="nav-item {% if 'about' in app.current_route %}selected{% endif %}">
+                        <a href="{{ path('app_about') }}">{{ 'base.about'|trans }}</a>
                     </div>
                     {% if app.user %}
                         <div class="nav-item">
-                            <a href="{{ path('app_game_start') }}">{{ 'base.game'|trans }}</a>
+                            <a href="{{ path('app_game_select_type') }}">{{ 'base.game'|trans }}</a>
                         </div>
                     {% endif %}
                 </div>
                 <div class="row navigation--right">
                     <div class="nav-item">
                         {% if app.user %}
-                            <span>{{ app.user.fullName  }}</span>
+                            <span>{{ 'app.user'|trans }}: {{ app.user.fullName  }}</span>
                             <a class="btn btn-primary" href="{{ path('app_login') }}">
                                 {{ 'base.account'|trans }}
                             </a>
@@ -52,4 +63,17 @@
     <body>
         {% block body %}{% endblock %}
     </body>
+
+    <footer>
+        <div class="container">
+            <div class="footer">
+                <div class="footer__left">
+                    {#                    <a href="{{ path('app_about') }}">{{ 'base.about'|trans }}</a>#}
+                    {#                    <a href="{{ path('app_sources') }}">{{ 'base.sources'|trans }}</a>#}
+                </div>
+                <div class="footer__right text-end">
+                    <p>Toto dílo je majetkem <a href="https://www.uhk.cz/">Univerzity Hradec Králové</a> | &copy; 2024 Jakub Urbanec</p>
+                </div>
+            </div>
+        </div>
 </html>

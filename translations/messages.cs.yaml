@@ -5,6 +5,8 @@ base:
   homepage: Úvod
   account: Účet
   game: Hrát
+  gdpr: Ochrana osobních údajů
+  about: O aplikaci
 homepage:
   title: Úvodní stránka
 registration:
@@ -27,3 +29,8 @@ form:
     find: Najít hru
     new: Nová hra
     random: Náhodná existující hra
+miniGame:
+  match:
+    detail: Spojovačka
+app:
+  user: 'Uživatel'

@@ -54,3 +54,18 @@
 
 
 }
+
+$color: blue;
+
+.text {
+  color: $color;
+}
+
+.href {
+  color: $color;
+  text-decoration: underline;
+
+    &:hover {
+        text-decoration: none;
+    }
+}

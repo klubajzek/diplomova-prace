@@ -29,6 +29,18 @@
   }
 }
 
+.text {
+  color: blue;
+}
+
+.href {
+  color: blue;
+  text-decoration: underline;
+}
+.href:hover {
+  text-decoration: none;
+}
+
 .btn {
   background-color: black !important;
   color: white !important;
@@ -61,6 +73,19 @@
     font-size: 3.6rem;
   }
 }
+.text {
+  color: blue;
+}
+
+.href {
+  color: blue;
+  text-decoration: underline;
+}
+
+.href:hover {
+  text-decoration: none;
+}
+
 .map {
   background-image: url(../../images/map/mapa-16-9.png);
   position: fixed;
@@ -226,12 +251,40 @@ header {
 }
 
 .nav {
+  display: flex;
+  flex-direction: row;
   gap: 2rem;
+  align-items: center;
+}
+.nav .logo {
+  max-width: 10rem;
+  margin-right: 5rem;
+}
+.nav .logo img {
+  width: 100%;
 }
 
 .navigation {
-  width: 80%;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
 }
+.navigation--right {
+  margin-left: auto !important;
+}
+.navigation .nav-item a {
+  text-decoration: none;
+  font-size: 1.6rem;
+  color: black;
+}
+.navigation .nav-item a:hover {
+  text-decoration: underline;
+}
+.navigation .nav-item.selected a {
+  text-decoration: underline;
+  pointer-events: none;
+}
+
 .page {
   padding: 5rem;
 }
@@ -271,6 +324,15 @@ header {
   .intro__info {
     flex-direction: row;
   }
+}
+.intro__info h2 {
+  font-size: 2rem;
+  margin: 2rem 0;
+}
+
+.btn-big {
+  padding: 0.5rem 2rem !important;
+  font-size: 1.6rem !important;
 }
 
 /*# sourceMappingURL=global.css.map */
