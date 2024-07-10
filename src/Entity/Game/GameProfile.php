@@ -2,11 +2,14 @@
 
 namespace App\Entity\Game;
 
+use App\Entity\MiniGames\Match\MiniGameMatchResult;
 use App\Entity\User\User;
 use App\Repository\User\GameProfileRepository;
 use App\Traits\Entity\Datetimeable;
 use App\Traits\Entity\Deactivationable;
 use App\Traits\Entity\ID;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: GameProfileRepository::class)]
@@ -31,6 +34,14 @@ class GameProfile
 
     #[ORM\ManyToOne(inversedBy: 'gameProfiles')]
     private ?Game $game = null;
+
+    #[ORM\OneToMany(mappedBy: 'gameProfile', targetEntity: MiniGameMatchResult::class)]
+    private Collection $miniGameMatchResults;
+
+    public function __construct()
+    {
+        $this->miniGameMatchResults = new ArrayCollection();
+    }
 
     public function getPosition(): ?int
     {
@@ -100,6 +111,36 @@ class GameProfile
     public function setGame(?Game $game): static
     {
         $this->game = $game;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, MiniGameMatchResult>
+     */
+    public function getMiniGameMatchResults(): Collection
+    {
+        return $this->miniGameMatchResults;
+    }
+
+    public function addMiniGameMatchResult(MiniGameMatchResult $miniGameMatchResult): static
+    {
+        if (!$this->miniGameMatchResults->contains($miniGameMatchResult)) {
+            $this->miniGameMatchResults->add($miniGameMatchResult);
+            $miniGameMatchResult->setGameProfile($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMiniGameMatchResult(MiniGameMatchResult $miniGameMatchResult): static
+    {
+        if ($this->miniGameMatchResults->removeElement($miniGameMatchResult)) {
+            // set the owning side to null (unless already changed)
+            if ($miniGameMatchResult->getGameProfile() === $this) {
+                $miniGameMatchResult->setGameProfile(null);
+            }
+        }
 
         return $this;
     }

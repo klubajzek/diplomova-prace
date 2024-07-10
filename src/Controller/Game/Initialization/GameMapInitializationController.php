@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Game\Start;
+namespace App\Controller\Game\Initialization;
 
 use App\Entity\Game\Game;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -8,8 +8,8 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route(path: '/hra/{id}/pocatecni-mapa/', name: 'app_game_start_map')]
-class GameMapStartController extends AbstractController
+#[Route(path: '/hra/{id}/pocatecni-mapa/', name: 'app_game_map_initialization')]
+class GameMapInitializationController extends AbstractController
 {
     /**
      * @return RedirectResponse

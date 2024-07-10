@@ -1,0 +1,22 @@
+{% extends 'frontend/game/game_base.html.twig' %}
+
+{% block title %}{{ 'miniGame.match.detail'|trans }}{% endblock %}
+
+{% block body %}
+    <section>
+        <a href="{{ path('app_game_map', {'id': gameProfile.game.id}) }}">Zpět na mapu</a>
+        <div class="container">
+            <div class="col">
+                {% for item in questions %}
+                    <div class="row">{{ item.question }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="col">
+                {% for item in answers %}
+                    <div class="row">{{ item.answer }}</div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

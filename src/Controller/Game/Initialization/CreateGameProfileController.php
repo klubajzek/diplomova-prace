@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Game\Start;
+namespace App\Controller\Game\Initialization;
 
 use App\Entity\Game\Game;
 use App\Entity\Game\GameProfile;
@@ -11,7 +11,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Http\Attribute\CurrentUser;
 
 class CreateGameProfileController extends AbstractController
 {
@@ -60,7 +59,7 @@ class CreateGameProfileController extends AbstractController
 
         return new JsonResponse([
             'success' => true,
-            'url' => $this->generateUrl('app_game_detail', ['id' => $game->getId()]
+            'url' => $this->generateUrl('app_game_village', ['id' => $gameProfile->getId()]
         )]);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Game\Detail;
+namespace App\Controller\Game\Village;
 
 use App\Entity\Game\GameProfile;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -8,8 +8,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route(path: '/hra/{id}/detail/', name: 'app_game_detail')]
-class GameDetailController extends AbstractController
+#[Route(path: '/hra/{id}/vesnice/', name: 'app_game_village')]
+class VillageDetailController extends AbstractController
 {
     public function __invoke(Request $request, GameProfile $gameProfile): Response
     {

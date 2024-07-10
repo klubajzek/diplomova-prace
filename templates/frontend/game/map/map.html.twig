@@ -13,14 +13,14 @@
         <div class="container">
                 {% for item in game.gameProfiles %}
                     {% if item.user.id is same as app.user.id %}
-                        <a class="city-position-{{ item.position }} city-occupied" href="{{ path('app_game_detail', {'id': item.id}) }}">
+                        <a class="city-position-{{ item.position }} city-occupied" href="{{ path('app_game_village', {'id': item.id}) }}">
                         </a>
                     {% else %}
                         <div class="city-position-{{ item.position }} city-occupied">
                         </div>
                     {% endif %}
                 {% endfor %}
-            <a href="#!" class="stone"></a>
+            <a href="{{ path('app_game_start_mini_game') }}" class="stone"></a>
             <a href="#!" class="wheat"></a>
             <a href="#!" class="wood"></a>
         </div>
