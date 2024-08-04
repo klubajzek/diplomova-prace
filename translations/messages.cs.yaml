@@ -21,11 +21,38 @@ login:
 game:
   start:
     title: Hra
+    selectTitle: Vyberte si typ mapy
+    selectInfo: 'V tomto kroku si vyberte, jakou mapu chcete hrát. Můžete si vybrat znásledující možnosti:'
+    existedMap: 'Existující mapa'
+    existedMapText: 'Tato možnost je pro hráče, kteří se chtějí připojit na mapu k jiným hráčům, od kterých znají kód mapy.'
+    randomMap: 'Náhodná mapa'
+    randomMapText: 'Připojí Vás na náhodnou mapu, kde budou náhodní hráči.'
+    newMap: 'Nová mapa'
+    newMapText: 'Vytvoří novou hru s mapou, na kterou se později mohou připojit Vaši kamarádi pomocí kódu mapy.'
+    selectVillage: 'Vyberte vesnici'
   detail: Vesnice
+  food: Jídlo
+  wood: Dřevo
+  stone: Kámen
+  village: Obyvatelé
+  info: Informace
+  backToMap: 'Zpět na mapu'
+  villageDetail:
+    buildingPosition: Postavit budovu
+    building:
+      main: 'Hlavní budova'
+      house: 'Dům'
+      barn: 'Stodola'
+  villageOf: Vesnice hráče nickname
+  villageEnter: 'Vstoupit do vesnice'
+  minigame:
+    stoneType: 'Minihra pro získání kamenů'
+    wheatType: 'Minihra pro získání jídla'
+    woodType: 'Minihra pro získání dřeva'
 
 form:
   game:
-    code: Kód hry
+    code: 'Kód hry: '
     find: Najít hru
     new: Nová hra
     random: Náhodná existující hra

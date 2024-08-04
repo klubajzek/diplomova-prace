@@ -13,38 +13,70 @@
     {% block javascripts %}
         <script type="text/javascript" src="{{ asset('assets/js/app.js') }}?v={{ filemtime('assets/js/app.js') }}"></script>
         <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-3.7.1.min.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+        <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+
+        <script type="text/javascript">
+            jQuery(document).ready(function() {
+                tippy('.tippy', {
+                    content(reference) {
+                        return reference.getAttribute('data-text');
+                    },
+                    allowHTML: true,
+                });
+            });
+        </script>
+
+        {% if helpTitle is defined and helpText is defined %}
+            <script type="text/javascript">
+                jQuery(document).ready(function() {
+                    jQuery('.game-info').on('click', function() {
+                        Swal.fire({
+                            title: '{{ helpTitle }}',
+                            html: `{{ helpText|raw }}`,
+                            showCloseButton: true,
+                            showCancelButton: false,
+                            focusConfirm: false,
+                            confirmButtonText: 'Close'
+                        });
+                    });
+                });
+            </script>
+        {% endif %}
     {% endblock %}
 </head>
-{# <header> #}
-{#    <div class="container"> #}
-{#        <div class="nav"> #}
-{#            <div class="navigation"> #}
-{#                <div class="nav-item"> #}
-{#                    <a href="{{ path('app_homepage') }}">{{ 'base.homepage'|trans }}</a> #}
-{#                </div> #}
-{#            </div> #}
-{#            <div class="row navigation--right"> #}
-{#                <div class="nav-item"> #}
-{#                    {% if app.user %} #}
-{#                        <span>{{ app.user.fullName  }}</span> #}
-{#                        <a class="btn btn-primary" href="{{ path('app_login') }}"> #}
-{#                            {{ 'base.account'|trans }} #}
-{#                        </a> #}
-{#                    {% else %} #}
-{#                        <a class="btn btn-primary" href="{{ path('app_login') }}"> #}
-{#                            {{ 'base.login'|trans }} #}
-{#                        </a> #}
-{#                    {% endif %} #}
-{#                </div> #}
-{#                #}{#                    <div class="nav-item"> #}
-{#                #}{#                        <a class="btn btn-secondary" href="{{ path('app_register') }}"> #}
-{#                #}{#                            {{ 'base.register'|trans }} #}
-{#                #}{#                        </a> #}
-{#                #}{#                    </div> #}
-{#            </div> #}
-{#        </div> #}
-{#    </div> #}
-{# </header> #}
+{% if app.user.gameProfile != null %}
+    <header class="game-header">
+        <div class="nav">
+            {% if showBackToMap is defined %}
+                <a class="back-to-map tippy" data-text="{{ 'game.backToMap'|trans }}" href="{{ path('app_game_map', {'id': app.user.gameProfile.game.id}) }}"><img src="{{ asset('assets/images/back.png') }}" alt="{{ 'game.backToMap'|trans }}"></a>
+            {% endif %}
+            <div class="nav-game tippy" data-text="{{ 'game.food'|trans }}">
+                <img src="{{ asset('assets/images/wheat.PNG') }}" alt="{{ 'game.food'|trans }}">
+                <span>{{ app.user.gameProfile.food }}</span>
+            </div>
+            <div class="nav-game tippy" data-text="{{ 'game.wood'|trans }}">
+                <img src="{{ asset('assets/images/tree.PNG') }}" alt="{{ 'game.wood'|trans }}">
+                <span>{{ app.user.gameProfile.wood }}</span>
+            </div>
+            <div class="nav-game tippy" data-text="{{ 'game.stone'|trans }}">
+                <img src="{{ asset('assets/images/stone.PNG') }}" alt="{{ 'game.stone'|trans }}">
+                <span>{{ app.user.gameProfile.stone }}</span>
+            </div>
+            <div class="nav-game tippy" data-text="{{ 'game.village'|trans }}">
+                <img src="{{ asset('assets/images/village.PNG') }}" alt="{{ 'game.village'|trans }}">
+                <span>{{ app.user.gameProfile.stone }}</span>
+            </div>
+
+            {% if helpTitle is defined and helpText is defined %}
+                <div class="game-info tippy" data-text="{{ 'game.info'|trans }}">
+                    <img src="{{ asset('assets/images/info.PNG') }}" alt="{{ 'game.info'|trans }}">
+                </div>
+            {% endif %}
+        </div>
+    </header>
+{% endif %}
 <body>
 {% block body %}{% endblock %}
 </body>

@@ -47,61 +47,81 @@
     top: 20%;
     left: 46%;
     transform: translateX(-5%) translateY(-50%);
+
+    &:hover {
+      transform: scale(1.1) translateX(-5%) translateY(-50%);
+    }
   }
 
   &-2 {
     top: 50%;
     left: 64%;
     transform: translateX(-14%) translateY(-72%);
+
+    &:hover {
+      transform: scale(1.1) translateX(-14%) translateY(-72%);
+    }
   }
 
   &-3 {
     top: 79%;
     left: 52%;
     transform: translateX(-79%) translateY(-50%);
+
+    &:hover {
+      transform: scale(1.1) translateX(-79%) translateY(-50%);
+    }
   }
 
-  &-4 {
-    top: 7%;
-    left: 22%;
-    transform: translateX(-7%) translateY(-22%);
-  }
-
-  &-5 {
-    top: 42%;
-    left: 40%;
-    transform: translateX(-42%) translateY(-40%);
-  }
-
-  &-6 {
-    top: 54%;
-    left: 64%;
-    transform: translateX(-54%) translateY(-64%);
-  }
-
-  &-7 {
-    top: 47%;
-    left: 89%;
-    transform: translateX(-47%) translateY(-89%);
-  }
-
-  &-8 {
-    top: 64%;
-    left: 8%;
-    transform: translateX(-64%) translateY(-8%);
-  }
-
-  &-9 {
-    top: 32%;
-    left: 8%;
-    transform: translateX(-32%) translateY(-8%);
-  }
-
-  &-10 {
-    top: 88%;
-    left: 73%;
-    transform: translateX(-88%) translateY(-73%);
-  }
+  //&-4 {
+  //  top: 7%;
+  //  left: 22%;
+  //  transform: translateX(-7%) translateY(-22%);
+  //
+  //  &:hover {
+  //    transform: scale(1.1) translateX(-7%) translateY(-22%);
+  //  }
+  //}
+  //
+  //&-5 {
+  //  top: 42%;
+  //  left: 40%;
+  //  transform: translateX(-42%) translateY(-40%);
+  //}
+  //
+  //&-6 {
+  //  top: 54%;
+  //  left: 64%;
+  //  transform: translateX(-54%) translateY(-64%);
+  //}
+  //
+  //&-7 {
+  //  top: 47%;
+  //  left: 89%;
+  //  transform: translateX(-47%) translateY(-89%);
+  //}
+  //
+  //&-8 {
+  //  top: 64%;
+  //  left: 8%;
+  //  transform: translateX(-64%) translateY(-8%);
+  //}
+  //
+  //&-9 {
+  //  top: 32%;
+  //  left: 8%;
+  //  transform: translateX(-32%) translateY(-8%);
+  //}
+  //
+  //&-10 {
+  //  top: 88%;
+  //  left: 73%;
+  //  transform: translateX(-88%) translateY(-73%);
+  //
+  //  &:hover {
+  //    transform: scale(1.1) translateX(-88%) translateY(-73%);
+  //  }
+  //}
 }
 
 .city-occupied {
@@ -113,6 +133,7 @@
   background-repeat: no-repeat;
   background-position: center;
   z-index: -1;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .stone {
@@ -126,6 +147,11 @@
   z-index: -1;
   left: 90%;
   top: 14%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 .wood {
@@ -139,6 +165,11 @@
   z-index: -1;
   left: 49%;
   top: 70%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 .wheat {
@@ -152,5 +183,10 @@
   z-index: -1;
   left: 10%;
   top: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 

@@ -3,13 +3,59 @@
 {% block title %}{{ 'game.start.title'|trans }}{% endblock %}
 
 {% block body %}
-    <div class="container">
-        <div class="form">
-            {{ form_start(form) }}
-                <div class="form-control">
-                    {{ form_widget(form.find) }}
+    <div class="background-map">
+        <div class="container">
+            <div class="form">
+                <h2 class="text-center mb-4">{{ 'game.start.selectTitle'|trans }}</h2>
+                <div class="form-text">
+                    {{ 'game.start.selectInfo'|trans }}
                 </div>
-            {{ form_end(form) }}
+
+                <div class="form-divider"></div>
+
+                {{ form_start(form) }}
+                    <h3 class="text-center mb-2">{{ 'game.start.existedMap'|trans }}</h3>
+                    <div class="form-text">
+                        {{ 'game.start.existedMapText'|trans }}
+                    </div>
+                    <div class="form-row">
+                        <div class="d-flex">
+                            {{ form_label(form.code) }}
+                            <div>
+                                {{ form_widget(form.code) }}
+                                {% if form_errors(form.code) %}
+                                    <div class="form-error">
+                                        {{ form_errors(form.code) }}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                        </div>
+
+                        {{ form_widget(form.find) }}
+                    </div>
+
+                    <div class="form-divider"></div>
+
+                    <h3 class="text-center mb-2">{{ 'game.start.randomMap'|trans }}</h3>
+                    <div class="form-text">
+                        {{ 'game.start.randomMapText'|trans }}
+                    </div>
+                    <div class="form-row">
+                        {{ form_widget(form.random) }}
+                    </div>
+
+                    <div class="form-divider"></div>
+
+                    <h3 class="text-center mb-2">{{ 'game.start.newMap'|trans }}</h3>
+                    <div class="form-text">
+                        {{ 'game.start.newMapText'|trans }}
+                    </div>
+                    <div class="form-row">
+                        {{ form_widget(form.new) }}
+                    </div>
+                {{ form_end(form) }}
+            </div>
         </div>
     </div>
 

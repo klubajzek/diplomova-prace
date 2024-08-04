@@ -57,7 +57,7 @@ class GameProfile
 
     public function getWood(): ?int
     {
-        return $this->wood;
+        return $this->wood != null ? $this->wood : 0;
     }
 
     public function setWood(?int $wood): static
@@ -69,7 +69,7 @@ class GameProfile
 
     public function getStone(): ?int
     {
-        return $this->stone;
+        return $this->stone != null ? $this->stone : 0;
     }
 
     public function setStone(?int $stone): static
@@ -81,7 +81,7 @@ class GameProfile
 
     public function getFood(): ?int
     {
-        return $this->food;
+        return $this->food != null ? $this->food : 0;
     }
 
     public function setFood(?int $food): static

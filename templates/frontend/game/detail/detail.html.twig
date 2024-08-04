@@ -4,7 +4,24 @@
 
 {% block body %}
     <section>
-        <a href="{{ path('app_game_map', {'id': gameProfile.game.id}) }}">Zpět na mapu</a>
         <div class="detail-background"></div>
+
+        <div class="village-building-menu">
+            <div class="village-building-item tippy" data-text="{{ 'game.villageDetail.building.main'|trans }}">
+                <img src="{{ asset('assets/images/main-building.png') }}" alt="{{ 'game.villageDetail.building.main'|trans }}">
+            </div>
+            <div class="village-building-item tippy" data-text="{{ 'game.villageDetail.building.house'|trans }}">
+                <img src="{{ asset('assets/images/house.png') }}" alt="{{ 'game.villageDetail.building.house'|trans }}">
+            </div>
+            <div class="village-building-item tippy" data-text="{{ 'game.villageDetail.building.barn'|trans }}">
+                <img src="{{ asset('assets/images/barn.png') }}" alt="{{ 'game.villageDetail.building.barn'|trans }}">
+            </div>
+        </div>
+
+        <div class="container" data-url="{{ path('create_new_game_profile', {'id': gameProfile.game.id}) }}">
+            {% for item in 1..5 %}
+                <a class="building-position-{{ item }} building-position tippy" data-text="{{ 'game.villageDetail.buildingPosition'|trans }}" data-position="{{ item }}"></a>
+            {% endfor %}
+        </div>
     </section>
 {% endblock %}

@@ -1,0 +1,121 @@
+@use "../shared" as shared;
+@use "../variables" as tokens;
+
+.game-header {
+  padding: 1rem 0;
+  background-color: transparent;
+
+  .nav {
+    display: flex;
+    justify-content: center;
+    padding: 0 5rem;
+    position: relative;
+  }
+
+  .nav-game {
+    background: gray;
+    padding: 0.5rem 1rem;
+    border: 1px solid black;
+    border-radius: 1rem;
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    img {
+      max-width: 2rem;
+      max-height: 2rem;
+    }
+
+    span {
+        font-size: 1.4rem;
+        color: tokens.$color-font-base;
+        font-weight: bold;
+    }
+  }
+
+  .game-info {
+    position: absolute;
+    right: 1.5rem;
+    cursor: pointer;
+
+    img {
+      max-width: 2rem;
+      max-height: 2rem;
+      border-radius: 50%;
+      background-color: gray;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  .back-to-map {
+    color: black;
+    text-decoration: none;
+    font-size: 1.4rem;
+    position: absolute;
+    left: 0.5rem;
+
+    img {
+      max-width: 2rem;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.background-map {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+
+  &::before {
+    content: "";
+    background-image: url(../../images/map/mapa-16-9.png);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: -1;
+    opacity: 0.2;
+
+    &__img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  .form-row {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0 1rem 0;
+
+    label {
+      margin-right: 1rem;
+    }
+
+    .form-error {
+      color: red;
+
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+    }
+  }
+}

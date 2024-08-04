@@ -57,6 +57,8 @@ class GameTypeSelectionController extends AbstractController
 
                 if ($game === null) {
                     $form->get('code')->addError(new FormError('Hra s tímto kódem neexistuje'));
+                } elseif ($game->getGameProfiles()->count() == 3) {
+                    $form->get('code')->addError(new FormError('Hra je již plná'));
                 } else {
                     return $this->redirectToRoute('app_game_map_initialization', ['id' => $game->getId()]);
                 }

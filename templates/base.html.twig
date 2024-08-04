@@ -33,9 +33,15 @@
                         <a href="{{ path('app_about') }}">{{ 'base.about'|trans }}</a>
                     </div>
                     {% if app.user %}
-                        <div class="nav-item">
-                            <a href="{{ path('app_game_select_type') }}">{{ 'base.game'|trans }}</a>
-                        </div>
+                        {% if app.user.gameProfile == null or app.user.gameProfile.game == null %}
+                            <div class="nav-item">
+                                <a href="{{ path('app_game_select_type') }}">{{ 'base.game'|trans }}</a>
+                            </div>
+                        {% else %}
+                            <div class="nav-item">
+                                <a href="{{ path('app_game_map', {"id": app.user.gameProfile.game.id}) }}">{{ 'base.game'|trans }}</a>
+                            </div>
+                        {% endif %}
                     {% endif %}
                 </div>
                 <div class="row navigation--right">

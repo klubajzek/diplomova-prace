@@ -20,7 +20,16 @@ class VillageDetailController extends AbstractController
         }
 
         return $this->render('frontend/game/detail/detail.html.twig', [
-            'gameProfile' => $gameProfile
+            'gameProfile' => $gameProfile,
+            'showBackToMap' => true,
+            'helpTitle' => 'Vesnice',
+            'helpText' => 'Ve vesnici můžete stavět budovy, které Vám umožní později postupovat dále příběhem. <br> 
+                Typy budov:<br>
+                <ol>
+                <li>Hlavní budova: Ubytuje 5 obyvatel, je centerem vesnice. Cena: 5 kamene a 5 dřeva</li>
+                <li>Dům: Slouží k ubytování obyvatel. Cena: 1 kámen a 2 dřeva</li>
+                <li>Stodola: Slouží k uchování většího množství surovin. Cena: 2 kameny a 3 dřeva</li>
+            </ol>',
         ]);
     }
 }

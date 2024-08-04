@@ -28,7 +28,7 @@ class CreateGameProfileController extends AbstractController
 
         $user = $this->getUser();
 
-        if (!$user instanceof User) {
+        if (!$user === null) {
             return new JsonResponse([
                 'success' => true,
                 'url' => $this->generateUrl('app_login'
