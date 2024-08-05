@@ -21,20 +21,19 @@ class MiniGameMatchAnswerRepository extends ServiceEntityRepository
         parent::__construct($registry, MiniGameMatchAnswer::class);
     }
 
-//    /**
-//     * @return MiniGameMatchAnswer[] Returns an array of MiniGameMatchAnswer objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('m')
-//            ->andWhere('m.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('m.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * @return MiniGameMatchAnswer[] Returns an array of MiniGameMatchAnswer objects
+     */
+    public function findRandom(int $max): array
+    {
+        return $this->createQueryBuilder('m')
+            ->andWhere('m.question IS NOT NULL')
+            ->setMaxResults($max)
+            ->orderBy('RAND()')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 
 //    public function findOneBySomeField($value): ?MiniGameMatchAnswer
 //    {

@@ -1,0 +1,24 @@
+{% extends 'frontend/game/game_base.html.twig' %}
+
+{% block title %}{{ 'miniGame.match.detail'|trans }}{% endblock %}
+
+{% block body %}
+    <section class="background-map mini-game-match">
+        <div class="container">
+            <h1 class="h1 mb-3">{{ 'miniGame.match.detail'|trans }}</h1>
+            <div class="mini-game-match__parent">
+                <div class="col">
+                    {% for item in answers %}
+                        <div class="row">{{ item.question.question }}</div>
+                    {% endfor %}
+                </div>
+
+                <div class="col">
+                    {% for item in answers %}
+                        <div class="row">{{ item.answer }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

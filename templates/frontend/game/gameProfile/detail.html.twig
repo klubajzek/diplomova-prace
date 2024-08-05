@@ -1,0 +1,40 @@
+{% extends 'frontend/game/game_base.html.twig' %}
+
+{% block title %}{{ 'game.gameProfile'|trans }}{% endblock %}
+
+{% block body %}
+    <section class="background-map game-profile">
+        <div class="container">
+            <h1 class="h1 mb-3">{{ 'game.gameProfile'|trans }} - {{ app.user.nickname }}</h1>
+            <div class="game-profile__parent">
+                <div class="col">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>Odehráno her:</td>
+                                <td>8</td>
+                            </tr>
+                            <tr>
+                                <td>Celkový počet chyb:</td>
+                                <td>13</td>
+                            </tr>
+                            <tr>
+                                <td>Odehráno spojovaček:</td>
+                                <td>6</td>
+                            </tr>
+                            <tr>
+                                <td>Odehráno přetahovaček:</td>
+                                <td>9</td>
+                            </tr>
+                            <tr>
+                                <td>Místo v globálním žebříčku:</td>
+                                <td>1.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </section>
+{% endblock %}

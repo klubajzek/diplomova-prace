@@ -7,6 +7,7 @@ base:
   game: Hrát
   gdpr: Ochrana osobních údajů
   about: O aplikaci
+  admin: Administrace
 homepage:
   title: Úvodní stránka
 registration:
@@ -49,6 +50,18 @@ game:
     stoneType: 'Minihra pro získání kamenů'
     wheatType: 'Minihra pro získání jídla'
     woodType: 'Minihra pro získání dřeva'
+  miniGame:
+    type:
+      wood: dřevo
+      stone: kámen
+      wheat: jídlo
+    select: 'Výběr minihry'
+    selectMiniGame: Vybrat minihru
+    match: 'Spojovačka'
+    matchDescription: 'V této hře spojujete příklady s výsledky. Za každé tři správné spojené páry získáte '
+    drag: 'Přetahovačka'
+    dragDescription: 'V této hře skládáte příklady přetažením do určitého místa. Za každý správně složený příklad získáte '
+  gameProfile: 'Herní profil'
 
 form:
   game:
@@ -59,5 +72,15 @@ form:
 miniGame:
   match:
     detail: Spojovačka
+  drag:
+    detail: 'Přetahovačka'
 app:
   user: 'Uživatel'
+administration:
+  dashboard: 'Administrace'
+  users:
+    title: 'Uživatelé'
+  match:
+    title: 'Příklady pro spojovačku'
+  drag:
+    title: 'Příklady pro přetahovačku'

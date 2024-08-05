@@ -1,0 +1,32 @@
+{% extends 'frontend/game/game_base.html.twig' %}
+
+{% block title %}
+    {{ 'game.miniGame.select'|trans }}
+{% endblock %}
+
+{% block body %}
+    <section class="background-map mini-games">
+        <div class="container">
+            <h1 class="h1">{{ 'game.miniGame.select'|trans }}</h1>
+
+            <div class="mini-game-item">
+                <h2 class="mini-game-item__title">{{ 'game.miniGame.match'|trans }}</h2>
+                <div class="mini-game-item__description">{{ 'game.miniGame.matchDescription'|trans }}1 {{ ('game.miniGame.type.' ~ type)|trans }}.</div>
+                <a href="{{ path('app_game_mini_game_match_start', {'id': game.id}) }}" class="btn btn-primary mt-2 mb-2">{{ 'game.miniGame.selectMiniGame'|trans }}</a>
+            </div>
+
+            <div class="form-divider"></div>
+
+            <div class="mini-game-item">
+                <h2 class="mini-game-item__title">{{ 'game.miniGame.drag'|trans }}</h2>
+                <div class="mini-game-item__description">{{ 'game.miniGame.dragDescription'|trans }}1 {{ ('game.miniGame.type.' ~ type)|trans }}.</div>
+                <a href="{{ path('app_game_mini_game_drag_start', {'id': game.id}) }}" class="btn btn-primary mt-2 mb-2">{{ 'game.miniGame.selectMiniGame'|trans }}</a>
+            </div>
+
+{#                <div class="mini-game-item tippy" data-text="{{ 'game.miniGame.selectGame'|trans }}">#}
+{#                    <img src="{{ asset('assets/images/mini-game.png') }}" alt="{{ 'game.miniGame.selectGame'|trans }}">#}
+{#                </div>#}
+        </div>
+    </section>
+{% endblock %}
+

@@ -1,0 +1,33 @@
+@use "./shared" as shared;
+@use "./variables" as tokens;
+
+.admin-game-detail {
+  display: flex;
+  flex-direction: column;
+
+  .add-new {
+    max-width: 10rem;
+    margin: 0 0 1rem auto;
+  }
+
+  table {
+    width: 100%;
+    border: 1px solid black;
+
+    td, th {
+      font-size: 1.5rem;
+      padding: 0.5rem 1rem;
+      border-bottom: 1px solid black;
+      border-right: 1px solid black;
+
+      img {
+        max-width: 2rem;
+        margin: 0 0.5rem;
+      }
+
+      &.action {
+        width: 10rem;
+      }
+    }
+  }
+}

@@ -69,6 +69,10 @@
                 <span>{{ app.user.gameProfile.stone }}</span>
             </div>
 
+            <a href="{{ path('app_game_profile_detail', {'id': app.user.gameProfile.game.id}) }}" class="user-profile tippy" data-text="{{ 'game.gameProfile'|trans }}">
+                <img src="{{ asset('assets/images/user.PNG') }}" alt="{{ 'game.gameProfile'|trans }}">
+            </a>
+
             {% if helpTitle is defined and helpText is defined %}
                 <div class="game-info tippy" data-text="{{ 'game.info'|trans }}">
                     <img src="{{ asset('assets/images/info.PNG') }}" alt="{{ 'game.info'|trans }}">

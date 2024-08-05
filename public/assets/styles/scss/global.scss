@@ -4,6 +4,9 @@
 @import "game/map";
 @import "game/detail";
 @import "game/base";
+@import "game/minigame";
+@import "game/gameProfile";
+@import "admin";
 
 header {
   background-color: tokens.$color-green;

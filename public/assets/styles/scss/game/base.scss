@@ -4,6 +4,7 @@
 .game-header {
   padding: 1rem 0;
   background-color: transparent;
+  height: 5.5rem;
 
   .nav {
     display: flex;
@@ -39,13 +40,34 @@
     position: absolute;
     right: 1.5rem;
     cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    background-color: gray;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
     img {
       max-width: 2rem;
       max-height: 2rem;
-      border-radius: 50%;
-      background-color: gray;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  .user-profile {
+    position: absolute;
+    right: 6rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    background-color: gray;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+
+    img {
+      max-width: 2rem;
+      max-height: 2rem;
     }
 
     &:hover {
@@ -80,7 +102,7 @@
   &::before {
     content: "";
     background-image: url(../../images/map/mapa-16-9.png);
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;

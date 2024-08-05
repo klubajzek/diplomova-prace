@@ -1,0 +1,81 @@
+.mini-games {
+  align-items: unset;
+  margin: 3rem 0;
+}
+
+.mini-game-match {
+  align-items: unset;
+  margin: 3rem 0 0 0;
+}
+.mini-game-match__parent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.mini-game-match__parent .col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+.mini-game-match__parent .col .row {
+  background-color: lightblue;
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  box-shadow: 0 0 0.5rem 0.1rem rgba(0, 0, 0, 0.1);
+  border: 1px solid black;
+  width: 8rem;
+  justify-content: center;
+}
+
+.mini-game-drag {
+  align-items: unset;
+  margin: 3rem 0 0 0;
+}
+.mini-game-drag__parent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin: 3rem 0 0 0;
+}
+.mini-game-drag__parent .col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 2rem;
+  max-width: 50rem;
+  flex-wrap: wrap;
+}
+.mini-game-drag__parent .col .row {
+  background-color: lightblue;
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  box-shadow: 0 0 0.5rem 0.1rem rgba(0, 0, 0, 0.1);
+  border: 1px solid black;
+  width: 8rem;
+  justify-content: center;
+}
+.mini-game-drag__parent .col .result {
+  background-color: lightgreen;
+  height: 6rem;
+  width: 8rem;
+  align-items: center;
+}
+.mini-game-drag__parent .col .result-equals {
+  width: 2rem;
+}
+.mini-game-drag__parent .col.col-result {
+  max-width: unset;
+}
+
+/*# sourceMappingURL=gameProfile.css.map */

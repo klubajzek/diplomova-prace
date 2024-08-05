@@ -37,7 +37,7 @@ class MatchInitialDataCommand extends Command
         for ($i = 0; $i < 20; $i++) {
             [$num1, $num2, $operation, $answer] = $this->createNumbers();
 
-            while ($this->miniGameMatchQuestionRepository->findOneBy(['question' => "$num1 $operation $num2"])) {
+            while ($this->miniGameMatchQuestionRepository->findOneBy(['question' => "$num1 $operation $num2"]) || $answer > 20 || $answer < 0) {
                 [$num1, $num2, $operation, $answer] = $this->createNumbers();
             }
 

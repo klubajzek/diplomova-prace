@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'administration.match.title'|trans }}{% endblock %}
+
+{% block body %}
+    <section class="intro">
+        <div class="container">
+            <h1 class="intro__title">{{ 'administration.match.title'|trans }}</h1>
+            <div class="admin-game-detail">
+                <div class="add-new btn btn-primary">Přidat příklad</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Příklad</th>
+                            <th>Odpověď</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for answer in answers %}
+                            <tr>
+                                <td>
+                                    {{ answer.question.question }}
+                                </td>
+                                <td>
+                                    {{ answer.answer }}
+                                </td>
+                                <td class="action">
+                                    <img src="{{ asset('assets/images/edit.png') }}" alt="Upravit">
+                                    <img src="{{ asset('assets/images/delete.png') }}" alt="Odstranit">
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

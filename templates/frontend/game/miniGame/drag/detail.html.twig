@@ -1,0 +1,35 @@
+{% extends 'frontend/game/game_base.html.twig' %}
+
+{% block title %}{{ 'miniGame.drag.detail'|trans }}{% endblock %}
+
+{% block body %}
+    <section class="background-map mini-game-drag">
+        <div class="container">
+            <h1 class="h1 mb-3">{{ 'miniGame.drag.detail'|trans }}</h1>
+            <div class="mini-game-drag__parent">
+                <div class="col">
+                    <div class="row">7</div>
+                    <div class="row">+</div>
+                    <div class="row">18</div>
+                    <div class="row">12</div>
+                    <div class="row">14</div>
+                    <div class="row">-</div>
+                    <div class="row">4</div>
+                    <div class="row">5</div>
+                    <div class="row">10</div>
+                    <div class="row">2</div>
+                    <div class="row">+</div>
+                    <div class="row">13</div>
+                </div>
+
+                <div class="col col-result">
+                    <div class="row result"></div>
+                    <div class="row result"></div>
+                    <div class="row result"></div>
+                    <div class="row result result-equals">=</div>
+                    <div class="row result"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

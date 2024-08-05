@@ -20,9 +20,9 @@
                         </div>
                     {% endif %}
                 {% endfor %}
-            <a href="{{ path('app_game_start_mini_game', {'id': game.id}) }}" class="stone tippy" data-text="{{ 'game.minigame.stoneType'|trans }}"></a>
-            <a href="#!" class="wheat tippy" data-text="{{ 'game.minigame.wheatType'|trans }}"></a>
-            <a href="#!" class="wood tippy" data-text="{{ 'game.minigame.woodType'|trans }}"></a>
+            <a href="{{ path('app_game_mini_game_select', {'id': game.id, 'type': 'stone'}) }}" class="stone tippy" data-text="{{ 'game.minigame.stoneType'|trans }}"></a>
+            <a href="{{ path('app_game_mini_game_select', {'id': game.id, 'type': 'wheat'}) }}" class="wheat tippy" data-text="{{ 'game.minigame.wheatType'|trans }}"></a>
+            <a href="{{ path('app_game_mini_game_select', {'id': game.id, 'type': 'wood'}) }}" class="wood tippy" data-text="{{ 'game.minigame.woodType'|trans }}"></a>
         </div>
     </section>
 

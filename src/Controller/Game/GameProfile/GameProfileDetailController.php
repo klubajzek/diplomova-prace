@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Game\Map;
+namespace App\Controller\Game\GameProfile;
 
 use App\Entity\Game\Game;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -8,8 +8,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route(path: '/hra/{id}/mapa/', name: 'app_game_map')]
-class GameMapController extends AbstractController
+#[Route(path: '/hra/{id}/herni-profil/', name: 'app_game_profile_detail')]
+class GameProfileDetailController extends AbstractController
 {
     public function __invoke(Request $request, Game $game): Response
     {
@@ -19,10 +19,10 @@ class GameMapController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
-        return $this->render('frontend/game/map/map.html.twig', [
+        return $this->render('frontend/game/gameProfile/detail.html.twig', [
             'game' => $game,
-            'helpText' => 'Vyberte minihru, kterou chcete hrát.',
-            'helpTitle' => 'Mapa',
+            'user' => $user,
+            'showBackToMap' => true,
         ]);
     }
 }
