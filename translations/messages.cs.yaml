@@ -84,6 +84,16 @@ form:
     nickname: Přezdívka
     plainPassword: Heslo
     roles: Role
+  match:
+    questionText: Otázka
+    answer: Odpověď
+    submit: Uložit
+  drag:
+    firstPart: První část
+    secondPart: Druhá část
+    submit: Uložit
+    answer: Odpověď
+    partBetween: Mezičást
 miniGame:
   match:
     detail: Spojovačka
@@ -98,5 +108,6 @@ administration:
     edit: 'Upravit uživatele'
   match:
     title: 'Příklady pro spojovačku'
+    edit: 'Upravit příklad'
   drag:
     title: 'Příklady pro přetahovačku'
