@@ -21,6 +21,16 @@ class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
+    public function findForDeactivation(\DateTimeInterface $date): null|array
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.deactivateInDate = :today')
+            ->setParameter('today', $date->format('Y-m-d'))
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
 //    /**
 //     * @return User[] Returns an array of User objects
 //     */

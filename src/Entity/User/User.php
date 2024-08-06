@@ -45,6 +45,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
     private ?GameProfile $gameProfile = null;
 
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $deactivateInDate = null;
+
     public function getFullName(): string
     {
         return $this->name . ' ' . $this->surname;
@@ -184,6 +187,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         $this->gameProfile = $gameProfile;
+
+        return $this;
+    }
+
+    public function getDeactivateInDate(): ?\DateTimeInterface
+    {
+        return $this->deactivateInDate;
+    }
+
+    public function setDeactivateInDate(?\DateTimeInterface $deactivateInDate): static
+    {
+        $this->deactivateInDate = $deactivateInDate;
 
         return $this;
     }

@@ -66,7 +66,7 @@ class RegistrationFormType extends AbstractType
             ]);
         }
 
-        if (!$options['isInAdmin']) {
+        if (!$options['isInAdmin'] && !$options['isProfile']) {
             $builder->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
                 'constraints' => [
@@ -78,7 +78,7 @@ class RegistrationFormType extends AbstractType
                     'class' => 'form-group flex-row'
                 ],
             ]);
-        } else {
+        } elseif (!$options['isProfile']){
             $builder->add('roles', ChoiceType::class, [
                 'choices' => [
                     Roles::array()
@@ -104,7 +104,8 @@ class RegistrationFormType extends AbstractType
             'data_class' => User::class,
             'label_format' => 'form.registration.%name%',
             'isInAdmin' => false,
-            'isEdit' => false
+            'isEdit' => false,
+            'isProfile' => false
         ]);
     }
 }

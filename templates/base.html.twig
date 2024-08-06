@@ -78,7 +78,7 @@
                 <div class="row navigation--right">
                     <div class="nav-item">
                         {% if app.user %}
-                            <span>{{ 'app.user'|trans }}: <a href="{{ path('app_login') }}">{{ app.user.fullName }}</a></span>
+                            <span>{{ 'app.user'|trans }}: <a href="{{ path('app_user_profile') }}">{{ app.user.fullName }}</a></span>
                             {% if is_granted('ROLE_ADMIN') %}
                                 <a class="btn btn-primary" href="{{ path('app_administration_dashboard') }}">
                                     {{ 'base.admin'|trans }}

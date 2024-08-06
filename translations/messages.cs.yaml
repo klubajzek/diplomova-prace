@@ -111,3 +111,6 @@ administration:
     edit: 'Upravit příklad'
   drag:
     title: 'Příklady pro přetahovačku'
+user:
+  profile:
+    title: 'Uživatelský účet'
