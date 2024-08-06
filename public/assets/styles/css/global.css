@@ -1,9 +1,9 @@
-.btn {
+.btn, .form button[type=submit] {
   background-color: black !important;
   color: white !important;
   border-color: black !important;
 }
-.btn:hover {
+.btn:hover, .form button[type=submit]:hover {
   background-color: white !important;
   color: black !important;
 }
@@ -41,13 +41,13 @@
   text-decoration: none;
 }
 
-.btn {
+.btn, .form button[type=submit] {
   background-color: black !important;
   color: white !important;
   border-color: black !important;
 }
 
-.btn:hover {
+.btn:hover, .form button[type=submit]:hover {
   background-color: white !important;
   color: black !important;
 }
@@ -316,13 +316,13 @@
   max-width: 4rem;
 }
 
-.btn {
+.btn, .form button[type=submit] {
   background-color: black !important;
   color: white !important;
   border-color: black !important;
 }
 
-.btn:hover {
+.btn:hover, .form button[type=submit]:hover {
   background-color: white !important;
   color: black !important;
 }
@@ -594,13 +594,13 @@
   padding: 0.5rem 1rem;
 }
 
-.btn {
+.btn, .form button[type=submit] {
   background-color: black !important;
   color: white !important;
   border-color: black !important;
 }
 
-.btn:hover {
+.btn:hover, .form button[type=submit]:hover {
   background-color: white !important;
   color: black !important;
 }
@@ -664,7 +664,61 @@
 .admin-game-detail table td.action, .admin-game-detail table th.action {
   width: 10rem;
 }
+.admin-game-detail table td.action a, .admin-game-detail table th.action a {
+  text-decoration: none;
+}
 
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.form form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+.form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.form .form-group label {
+  font-size: 1.5rem;
+}
+.form .form-group input, .form .form-group select {
+  font-size: 1.5rem;
+  padding: 0.5rem;
+}
+.form .form-group ul {
+  list-style-type: none;
+  padding: 0;
+}
+.form .form-group ul li {
+  font-size: 1rem;
+  color: red;
+}
+.form .form-group--inline {
+  display: flex;
+  gap: 1rem;
+}
+.form .form-group--inline .form-group {
+  flex: 1;
+}
+.form .form-group--action {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+.form #registration_form_roles label {
+  margin: 0 2rem 0 0;
+}
+.form #registration_form_roles input {
+  margin: 0 0.5rem 0 0;
+}
 header {
   background-color: #6fa005;
   padding: 2rem 0;
@@ -750,7 +804,7 @@ header {
   margin: 2rem 0;
 }
 
-.btn-big {
+.btn-big, .form button[type=submit] {
   padding: 0.5rem 2rem !important;
   font-size: 1.6rem !important;
 }

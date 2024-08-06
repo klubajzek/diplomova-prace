@@ -12,6 +12,37 @@
         {% block javascripts %}
             <script type="text/javascript" src="{{ asset('assets/js/app.js') }}?v={{ filemtime('assets/js/app.js') }}"></script>
             <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-3.7.1.min.js') }}"></script>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+            <script type="text/javascript">
+                jQuery(document).ready(function ($) {
+                    $(document).on('click', '.remove-item', function (e) {
+                        e.preventDefault();
+                        var _that = $(this);
+
+                        Swal.fire({
+                            title: 'Opravdu chcete položku smazat?',
+                            text: 'Již se nebude možné vrátit zpět!',
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonText: 'Odstranit',
+                            cancelButtonText: 'Zrušit'
+                        }).then((result) => {
+                            if (result.value) {
+
+                                $.ajax({
+                                    url: _that.attr('href'),
+                                    type: 'DELETE',
+                                    success: function (response) {
+                                        location.reload();
+                                    }
+                                });
+
+                            }
+                        });
+                    });
+                });
+            </script>
         {% endblock %}
     </head>
     <header>
@@ -47,12 +78,14 @@
                 <div class="row navigation--right">
                     <div class="nav-item">
                         {% if app.user %}
-                            <span>{{ 'app.user'|trans }}: {{ app.user.fullName  }}</span>
-                            <a class="btn btn-primary" href="{{ path('app_login') }}">
-                                {{ 'base.account'|trans }}
-                            </a>
-                            <a class="btn btn-primary" href="{{ path('app_administration_dashboard') }}">
-                                {{ 'base.admin'|trans }}
+                            <span>{{ 'app.user'|trans }}: <a href="{{ path('app_login') }}">{{ app.user.fullName }}</a></span>
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <a class="btn btn-primary" href="{{ path('app_administration_dashboard') }}">
+                                    {{ 'base.admin'|trans }}
+                                </a>
+                            {% endif %}
+                            <a class="btn btn-primary" href="{{ path('app_logout') }}">
+                                {{ 'base.logout'|trans }}
                             </a>
                         {% else %}
                             <a class="btn btn-primary" href="{{ path('app_login') }}">

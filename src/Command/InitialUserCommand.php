@@ -3,6 +3,7 @@
 namespace App\Command;
 
 use App\Entity\User\User;
+use App\Model\Roles;
 use App\Repository\User\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Command\Command;
@@ -44,7 +45,7 @@ class InitialUserCommand extends Command
         $user
             ->setNickname('admin')
             ->setEmail('urbanja1@uhk.cz')
-            ->setRoles(['ROLE_ADMIN'])
+            ->setRoles([Roles::ROLE_ADMIN->name])
             ->setIsVerified(true)
             ->setName('Admin')
             ->setSurname('Admin');

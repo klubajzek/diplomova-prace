@@ -7,18 +7,23 @@ base:
   game: Hrát
   gdpr: Ochrana osobních údajů
   about: O aplikaci
-  admin: Administrace
+  admin: Admin
+  logout: 'Odhlásit se'
+  agreed: Souhlasím s <a href="link">ochranou osobních údajů</a>
 homepage:
   title: Úvodní stránka
 registration:
   error:
     passwordLimit: Minimum znaků pro heslo je 6!
+
 login:
   name: Přihlásit se
   title: Přihlášení
   email: Přezdívka
   password: Heslo
   button: Přihlásit se
+  register: 'Registrovat se'
+  forgotPassword: 'Zapomenuté heslo'
 game:
   start:
     title: Hra
@@ -69,6 +74,16 @@ form:
     find: Najít hru
     new: Nová hra
     random: Náhodná existující hra
+  registration:
+    name: Jméno
+    surname: Příjmení
+    email: E-mail
+    password: Heslo
+    passwordConfirm: Potvrzení hesla
+    submit: Registrovat
+    nickname: Přezdívka
+    plainPassword: Heslo
+    roles: Role
 miniGame:
   match:
     detail: Spojovačka
@@ -80,6 +95,7 @@ administration:
   dashboard: 'Administrace'
   users:
     title: 'Uživatelé'
+    edit: 'Upravit uživatele'
   match:
     title: 'Příklady pro spojovačku'
   drag:

@@ -3,10 +3,14 @@
 namespace App\Form;
 
 use App\Entity\User\User;
+use App\Model\Roles;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
@@ -18,43 +22,89 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nickname')
-            ->add('name')
-            ->add('surname')
-            ->add('surname')
-            ->add('email', EmailType::class)
-            ->add('agreeTerms', CheckboxType::class, [
-                'mapped' => false,
-                'constraints' => [
-                    new IsTrue([
-                        'message' => 'registration.error.terms',
-                    ]),
+            ->add('nickname', TextType::class, [
+                'row_attr' => [
+                    'class' => 'form-group'
                 ],
             ])
-            ->add('plainPassword', PasswordType::class, [
+            ->add('name', TextType::class, [
+                'row_attr' => [
+                    'class' => 'form-group'
+                ],
+            ])
+            ->add('surname', TextType::class, [
+                'row_attr' => [
+                    'class' => 'form-group'
+                ],
+            ])
+            ->add('email', EmailType::class, [
+                'row_attr' => [
+                    'class' => 'form-group'
+                ],
+            ]);
+
+        if (!$options['isEdit']) {
+            $builder->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'registration.error.password',
+                        'message' => 'Heslo nesmí být prázdné!',
                     ]),
                     new Length([
                         'min' => 6,
-                        'minMessage' => 'registration.error.passwordLimit',
+                        'minMessage' => 'Minimum znaků pro heslo je 6!',
                         // max length allowed by Symfony for security reasons
                         'max' => 4096,
                     ]),
                 ],
-            ])
-        ;
+                'row_attr' => [
+                    'class' => 'form-group'
+                ],
+            ]);
+        }
+
+        if (!$options['isInAdmin']) {
+            $builder->add('agreeTerms', CheckboxType::class, [
+                'mapped' => false,
+                'constraints' => [
+                    new IsTrue([
+                        'message' => 'Musíte souhlasit s podmínkami!',
+                    ]),
+                ],
+                'row_attr' => [
+                    'class' => 'form-group flex-row'
+                ],
+            ]);
+        } else {
+            $builder->add('roles', ChoiceType::class, [
+                'choices' => [
+                    Roles::array()
+                ],
+                'multiple' => true,
+                'expanded' => true,
+                'required' => false,
+                'row_attr' => [
+                    'class' => 'form-group'
+                ],
+            ]);
+        }
+
+        $builder->add('submit', SubmitType::class, [
+            'label' => 'Uložit'
+        ]);
+
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => User::class,
+            'label_format' => 'form.registration.%name%',
+            'isInAdmin' => false,
+            'isEdit' => false
         ]);
     }
 }
