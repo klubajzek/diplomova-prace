@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repository\MiniGame\Match;
+namespace App\Repository\MiniGames\Match;
 
 use App\Entity\MiniGames\Match\MiniGameMatchAnswer;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;

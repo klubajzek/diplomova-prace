@@ -3,22 +3,28 @@
 {% block title %}{{ 'miniGame.match.detail'|trans }}{% endblock %}
 
 {% block body %}
-    <section class="background-map mini-game-match">
+    <section class="background-map mini-game-match" data-url="{{ path('app_game_mini_game_match_end', {'id': game.id, 'miniGameId': miniGame.id}) }}">
         <div class="container">
             <h1 class="h1 mb-3">{{ 'miniGame.match.detail'|trans }}</h1>
             <div class="mini-game-match__parent">
                 <div class="col">
-                    {% for item in answers %}
-                        <div class="row">{{ item.question.question }}</div>
+                    {% for item in randomArray(answers) %}
+                        <div class="row question-row" data-id="{{ item.id }}">{{ item.question.question }}</div>
                     {% endfor %}
                 </div>
 
                 <div class="col">
-                    {% for item in answers %}
-                        <div class="row">{{ item.answer }}</div>
+                    {% for item in randomArray(answers) %}
+                        <div class="row answer-row" data-id="{{ item.id }}" data-answer="{{ item.answer }}">{{ item.answer }}</div>
                     {% endfor %}
                 </div>
             </div>
         </div>
     </section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="{{ asset('assets/js/miniGame/match.js') }}"></script>
 {% endblock %}

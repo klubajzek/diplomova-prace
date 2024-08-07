@@ -1,0 +1,52 @@
+{% extends 'frontend/game/game_base.html.twig' %}
+
+{% block title %}{{ 'miniGame.match.result'|trans }}{% endblock %}
+
+{% block body %}
+    <section class="background-map game-profile">
+        <div class="container">
+            <h1 class="h1 mb-3">{{ 'miniGame.match.result'|trans }}</h1>
+            <div class="game-profile__parent">
+                <h2>Statistiky</h2>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Zodpovězeno správně:</td>
+                            <td>{{ matchResult.correctAnswers }}</td>
+                        </tr>
+                        <tr>
+                            <td>Zodpovězeno špatně:</td>
+                            <td>{{ matchResult.mistakes }}</td>
+                        </tr>
+                        <tr>
+                            <td>Nezodpovězeno:</td>
+                            <td>{{ matchResult.notFilled }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h2>Vaše odpovědi</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Otázka</th>
+                            <th>Odpověď</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in matchResult.miniGameMatchResultItems %}
+                            <tr class="{% if item.isFilled %}correct{% elseif item.mistakeAnswerText != '' %}mistake{% else %}not-filled{% endif %}">
+                                <td>{{ item.questionText }}</td>
+                                <td>{{ item.answerText }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <div class="d-flex mb-2" style="gap: 2rem">
+                    <div class="correct">Správná odpověď</div>
+                    <div class="mistake">Špatná odpověď</div>
+                    <div class="not-filled">Nevyplňeno</div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

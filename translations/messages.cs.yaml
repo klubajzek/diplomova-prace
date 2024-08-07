@@ -67,6 +67,7 @@ game:
     drag: 'Přetahovačka'
     dragDescription: 'V této hře skládáte příklady přetažením do určitého místa. Za každý správně složený příklad získáte '
   gameProfile: 'Herní profil'
+  map: 'Mapa'
 
 form:
   game:
@@ -97,6 +98,7 @@ form:
 miniGame:
   match:
     detail: Spojovačka
+    result: 'Výsledky spojovačky'
   drag:
     detail: 'Přetahovačka'
 app:

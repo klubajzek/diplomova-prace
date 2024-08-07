@@ -2,8 +2,6 @@
 
 namespace App\Controller\Admin\Users;
 
-use App\Entity\Game\Game;
-use App\Repository\MiniGame\Match\MiniGameMatchAnswerRepository;
 use App\Repository\User\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

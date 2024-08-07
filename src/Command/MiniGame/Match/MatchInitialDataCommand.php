@@ -4,7 +4,7 @@ namespace App\Command\MiniGame\Match;
 
 use App\Entity\MiniGames\Match\MiniGameMatchAnswer;
 use App\Entity\MiniGames\Match\MiniGameMatchQuestion;
-use App\Repository\MiniGame\Match\MiniGameMatchQuestionRepository;
+use App\Repository\MiniGames\Match\MiniGameMatchQuestionRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;

@@ -32,6 +32,18 @@
         width: 8rem;
         justify-content: center;
       }
+
+      .active {
+        background-color: mediumpurple;
+      }
+
+      .correct {
+        background-color: lightgreen;
+      }
+
+      .mistake {
+        background-color: lightcoral;
+      }
     }
   }
 }

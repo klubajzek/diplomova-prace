@@ -8,6 +8,12 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 2rem;
+    flex-direction: column;
+    margin: 0 0 3rem 0;
+
+    h2 {
+      margin: 2rem 0 0 0;
+    }
 
     .col {
         display: flex;
@@ -15,21 +21,35 @@
         align-items: center;
         flex-direction: column;
         gap: 1rem;
+    }
 
-      table {
-        background-color: lightblue;
-        font-size: 1.5rem;
+    table {
+      background-color: lightblue;
+      font-size: 1.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      box-shadow: 0 0 0.5rem 0.1rem rgba(0, 0, 0, 0.1);
+      border: 1px solid black;
+      justify-content: center;
+
+      td, th {
         padding: 0.5rem 1rem;
-        border-radius: 0.5rem;
-        cursor: pointer;
-        box-shadow: 0 0 0.5rem 0.1rem rgba(0, 0, 0, 0.1);
-        border: 1px solid black;
-        justify-content: center;
-
-        td {
-          padding: 0.5rem 1rem;
-        }
+        border-bottom: 1px solid black;
+        border-right: 1px solid black;
       }
+    }
+
+    .mistake {
+      color: red;
+    }
+
+    .correct {
+      color: green;
+    }
+
+    .not-filled {
+      color: purple;
     }
   }
 }

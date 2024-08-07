@@ -516,6 +516,15 @@
   width: 8rem;
   justify-content: center;
 }
+.mini-game-match__parent .col .active {
+  background-color: mediumpurple;
+}
+.mini-game-match__parent .col .correct {
+  background-color: lightgreen;
+}
+.mini-game-match__parent .col .mistake {
+  background-color: lightcoral;
+}
 
 .mini-game-drag {
   align-items: unset;
@@ -572,6 +581,11 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 2rem;
+  flex-direction: column;
+  margin: 0 0 3rem 0;
+}
+.game-profile__parent h2 {
+  margin: 2rem 0 0 0;
 }
 .game-profile__parent .col {
   display: flex;
@@ -580,7 +594,7 @@
   flex-direction: column;
   gap: 1rem;
 }
-.game-profile__parent .col table {
+.game-profile__parent table {
   background-color: lightblue;
   font-size: 1.5rem;
   padding: 0.5rem 1rem;
@@ -590,8 +604,19 @@
   border: 1px solid black;
   justify-content: center;
 }
-.game-profile__parent .col table td {
+.game-profile__parent table td, .game-profile__parent table th {
   padding: 0.5rem 1rem;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+}
+.game-profile__parent .mistake {
+  color: red;
+}
+.game-profile__parent .correct {
+  color: green;
+}
+.game-profile__parent .not-filled {
+  color: purple;
 }
 
 .btn, .form button[type=submit] {

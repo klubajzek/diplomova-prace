@@ -6,6 +6,10 @@
     <script type="text/javascript" src="{{ asset('assets/js/map.js') }}?v={{ filemtime('assets/js/map.js') }}"></script>
 {% endblock %}
 
+{% block title %}
+    {{ 'game.map'|trans }}
+{% endblock %}
+
 {% block body %}
     <section>
         <div class="map">
@@ -20,9 +24,9 @@
                         </div>
                     {% endif %}
                 {% endfor %}
-            <a href="{{ path('app_game_mini_game_select', {'id': game.id, 'type': 'stone'}) }}" class="stone tippy" data-text="{{ 'game.minigame.stoneType'|trans }}"></a>
-            <a href="{{ path('app_game_mini_game_select', {'id': game.id, 'type': 'wheat'}) }}" class="wheat tippy" data-text="{{ 'game.minigame.wheatType'|trans }}"></a>
-            <a href="{{ path('app_game_mini_game_select', {'id': game.id, 'type': 'wood'}) }}" class="wood tippy" data-text="{{ 'game.minigame.woodType'|trans }}"></a>
+            <a href="{{ path('app_game_mini_game_select', {'id': game.id, 'resource': 'stone'}) }}" class="stone tippy" data-text="{{ 'game.minigame.stoneType'|trans }}"></a>
+            <a href="{{ path('app_game_mini_game_select', {'id': game.id, 'resource': 'food'}) }}" class="wheat tippy" data-text="{{ 'game.minigame.wheatType'|trans }}"></a>
+            <a href="{{ path('app_game_mini_game_select', {'id': game.id, 'resource': 'wood'}) }}" class="wood tippy" data-text="{{ 'game.minigame.woodType'|trans }}"></a>
         </div>
     </section>
 

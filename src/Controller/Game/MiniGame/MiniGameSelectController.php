@@ -19,12 +19,18 @@ class MiniGameSelectController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
+        if ($user->getGameProfile()->getFood() < 1 && $request->get('resource') !== 'food') {
+            $this->addFlash('error', 'Nemáš dostatek jídla pro spuštění minihry.');
+            return $this->redirectToRoute('app_game_map', ['id' => $game->getId()]);
+        }
+
         return $this->render('frontend/game/miniGame/select.html.twig', [
             'game' => $game,
             'type' => $request->get('type'),
             'showBackToMap' => true,
             'helpText' => 'Vyber si minihru, kterou chceš hrát.',
             'helpTitle' => 'Vyber minihru',
+            'resource' => $request->get('resource'),
         ]);
     }
 }

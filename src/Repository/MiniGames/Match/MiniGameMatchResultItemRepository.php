@@ -1,28 +1,28 @@
 <?php
 
-namespace App\Repository\MiniGame\Match;
+namespace App\Repository\MiniGames\Match;
 
-use App\Entity\MiniGames\Match\MiniGameMatchQuestion;
+use App\Entity\MiniGames\Match\MiniGameMatchResultItem;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<MiniGameMatchQuestion>
+ * @extends ServiceEntityRepository<MiniGameMatchResultItem>
  *
- * @method MiniGameMatchQuestion|null find($id, $lockMode = null, $lockVersion = null)
- * @method MiniGameMatchQuestion|null findOneBy(array $criteria, array $orderBy = null)
- * @method MiniGameMatchQuestion[]    findAll()
- * @method MiniGameMatchQuestion[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method MiniGameMatchResultItem|null find($id, $lockMode = null, $lockVersion = null)
+ * @method MiniGameMatchResultItem|null findOneBy(array $criteria, array $orderBy = null)
+ * @method MiniGameMatchResultItem[]    findAll()
+ * @method MiniGameMatchResultItem[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class MiniGameMatchQuestionRepository extends ServiceEntityRepository
+class MiniGameMatchResultItemRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, MiniGameMatchQuestion::class);
+        parent::__construct($registry, MiniGameMatchResultItem::class);
     }
 
 //    /**
-//     * @return MiniGameMatchQuestion[] Returns an array of MiniGameMatchQuestion objects
+//     * @return MiniGameMatchMistake[] Returns an array of MiniGameMatchMistake objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -36,7 +36,7 @@ class MiniGameMatchQuestionRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?MiniGameMatchQuestion
+//    public function findOneBySomeField($value): ?MiniGameMatchMistake
 //    {
 //        return $this->createQueryBuilder('m')
 //            ->andWhere('m.exampleField = :val')
