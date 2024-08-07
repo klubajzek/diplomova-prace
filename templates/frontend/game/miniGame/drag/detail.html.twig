@@ -7,29 +7,26 @@
         <div class="container">
             <h1 class="h1 mb-3">{{ 'miniGame.drag.detail'|trans }}</h1>
             <div class="mini-game-drag__parent">
-                <div class="col">
-                    <div class="row">7</div>
-                    <div class="row">+</div>
-                    <div class="row">18</div>
-                    <div class="row">12</div>
-                    <div class="row">14</div>
-                    <div class="row">-</div>
-                    <div class="row">4</div>
-                    <div class="row">5</div>
-                    <div class="row">10</div>
-                    <div class="row">2</div>
-                    <div class="row">+</div>
-                    <div class="row">13</div>
+                <div class="col" ondrop="dropHandler(event)" ondragover="dragoverHandler(event)">
+                    {% for item in randomArray(dragItemParts) %}
+                        <div class="row row-drag" id="dragItem{{ loop.index }}" draggable="true" ondragstart="dragstartHandler(event)">{{ item['text'] }}</div>
+                    {% endfor %}
                 </div>
 
                 <div class="col col-result">
-                    <div class="row result"></div>
-                    <div class="row result"></div>
-                    <div class="row result"></div>
+                    <div class="row result" id="dropZone1" ondrop="dropHandler(event)" ondragover="dragoverHandler(event)"></div>
+                    <div class="row result" id="dropZone2" ondrop="dropHandler(event)" ondragover="dragoverHandler(event)"></div>
+                    <div class="row result" id="dropZone3" ondrop="dropHandler(event)" ondragover="dragoverHandler(event)"></div>
                     <div class="row result result-equals">=</div>
-                    <div class="row result"></div>
+                    <div class="row result" id="dropZone4" ondrop="dropHandler(event)" ondragover="dragoverHandler(event)"></div>
                 </div>
             </div>
         </div>
     </section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="{{ asset('assets/js/miniGame/drag.js') }}"></script>
 {% endblock %}

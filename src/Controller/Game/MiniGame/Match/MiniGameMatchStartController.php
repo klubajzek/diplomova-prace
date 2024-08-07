@@ -28,6 +28,13 @@ public function __invoke(Request $request, Game $game): Response
         return $this->redirectToRoute('app_game_map', ['id' => $game->getId()]);
     }
 
+    $answers = $this->miniGameMatchAnswerRepository->findRandom(10);
+
+    if ($answers === null) {
+        $this->addFlash('error', 'Nemáte dostatek otázek pro spuštění minihry.');
+        return $this->redirectToRoute('app_game_map', ['id' => $game->getId()]);
+    }
+
     if ($user->getGameProfile()->getFood() > 0 && $request->get('resource') !== 'food'){
         $user->getGameProfile()->setFood($user->getGameProfile()->getFood() - 1);
     }
@@ -37,8 +44,6 @@ public function __invoke(Request $request, Game $game): Response
     $miniGame->setGameProfile($this->getUser()->getGameProfile())
         ->setCreatedAt(new \DateTimeImmutable())
         ->setResource($request->get('resource'));
-
-    $answers = $this->miniGameMatchAnswerRepository->findRandom(10);
 
     foreach ($answers as $answer) {
         $miniGameItem = new MiniGameMatchResultItem();
@@ -58,7 +63,6 @@ public function __invoke(Request $request, Game $game): Response
         'answers' => $answers,
         'helpText' => 'Přiřaď správně odpovědi k otázkám.',
         'helpTitle' => 'Spojovací hra',
-        'showBackToMap' => true,
         'miniGame' => $miniGame,
         'game' => $game,
     ]);

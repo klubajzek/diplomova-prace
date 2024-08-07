@@ -21,6 +21,20 @@ class MiniGameDragItemRepository extends ServiceEntityRepository
         parent::__construct($registry, MiniGameDragItem::class);
     }
 
+    /**
+     * @return MiniGameDragItem[] Returns an array of MiniGameMatchAnswer objects
+     */
+    public function findRandom(int $max): array
+    {
+        return $this->createQueryBuilder('m')
+            ->andWhere('m.answer IS NOT NULL and (m.firstPart IS NOT NULL or m.secondPart IS NOT NULL)')
+            ->setMaxResults($max)
+            ->orderBy('RAND()')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
 //    /**
 //     * @return MiniGameDragItem[] Returns an array of MiniGameDragItem objects
 //     */

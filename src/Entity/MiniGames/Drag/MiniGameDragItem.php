@@ -3,6 +3,8 @@
 namespace App\Entity\MiniGames\Drag;
 
 use App\Repository\MiniGames\Drag\MiniGameDragItemRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: MiniGameDragItemRepository::class)]
@@ -24,6 +26,14 @@ class MiniGameDragItem
 
     #[ORM\Column(length: 255)]
     private ?string $answer = null;
+
+    #[ORM\OneToMany(mappedBy: 'dragItem', targetEntity: MiniGameDragResultItem::class)]
+    private Collection $miniGameDragResultItems;
+
+    public function __construct()
+    {
+        $this->miniGameDragResultItems = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -74,6 +84,36 @@ class MiniGameDragItem
     public function setAnswer(string $answer): static
     {
         $this->answer = $answer;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, MiniGameDragResultItem>
+     */
+    public function getMiniGameDragResultItems(): Collection
+    {
+        return $this->miniGameDragResultItems;
+    }
+
+    public function addMiniGameDragResultItem(MiniGameDragResultItem $miniGameDragResultItem): static
+    {
+        if (!$this->miniGameDragResultItems->contains($miniGameDragResultItem)) {
+            $this->miniGameDragResultItems->add($miniGameDragResultItem);
+            $miniGameDragResultItem->setDragItem($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMiniGameDragResultItem(MiniGameDragResultItem $miniGameDragResultItem): static
+    {
+        if ($this->miniGameDragResultItems->removeElement($miniGameDragResultItem)) {
+            // set the owning side to null (unless already changed)
+            if ($miniGameDragResultItem->getDragItem() === $this) {
+                $miniGameDragResultItem->setDragItem(null);
+            }
+        }
 
         return $this;
     }

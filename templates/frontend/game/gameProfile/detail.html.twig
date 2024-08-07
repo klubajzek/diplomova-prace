@@ -8,19 +8,20 @@
             <h1 class="h1 mb-3">{{ 'game.gameProfile'|trans }} - {{ app.user.nickname }}</h1>
             <div class="game-profile__parent">
                 <div class="col">
+                    <h2>Celkové statistiky</h2>
                     <table>
                         <tbody>
                             <tr>
                                 <td>Odehráno her:</td>
-                                <td>8</td>
+                                <td>{{ stats['matchCount'] }}</td>
                             </tr>
                             <tr>
                                 <td>Celkový počet chyb:</td>
-                                <td>13</td>
+                                <td>{{ stats['matchMistakes'] }}</td>
                             </tr>
                             <tr>
                                 <td>Odehráno spojovaček:</td>
-                                <td>6</td>
+                                <td>{{ stats['matchCount'] }}</td>
                             </tr>
                             <tr>
                                 <td>Odehráno přetahovaček:</td>
@@ -30,6 +31,32 @@
                                 <td>Místo v globálním žebříčku:</td>
                                 <td>1.</td>
                             </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>Odehrané spojovačky</h2>
+                <div class="col">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Datum</th>
+                                <th>Počet správných odpovědí</th>
+                                <th>Počet chyb</th>
+                                <th>Počet nevyplněných</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for match in miniGameMatches %}
+                                <tr>
+                                    <td>{{ match.createdAt|date('d.m.Y') }}</td>
+                                    <td>{{ match.correctAnswers ?? 0 }}</td>
+                                    <td>{{ match.mistakes ?? 0 }}</td>
+                                    <td>{{ match.notFilled ?? 0 }}</td>
+                                    <td><a href="{{ path('app_game_mini_game_match_result', {'id': game.id, 'miniGameId': match.id}) }}">Detail</a></td>
+                                </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>
