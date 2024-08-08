@@ -12,7 +12,12 @@
         </div>
         <div class="container" data-url="{{ path('create_new_game_profile', {'id': game.id}) }}">
                 {% for item in 1..3 %}
-                    <a class="city-position-{{ item }} city-position tippy" data-text="{{ 'game.start.selectVillage'|trans }}" data-position="{{ item }}"></a>
+                    {% if positions[item] is defined %}
+                        <a class="city-position-{{ item }} city-occupied">
+                        </a>
+                    {% else %}
+                        <a class="city-position-{{ item }} city-position tippy" data-text="{{ 'game.start.selectVillage'|trans }}" data-position="{{ item }}"></a>
+                    {% endif %}
                 {% endfor %}
         </div>
     </section>

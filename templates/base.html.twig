@@ -63,6 +63,12 @@
                     <div class="nav-item {% if 'about' in app.current_route %}selected{% endif %}">
                         <a href="{{ path('app_about') }}">{{ 'base.about'|trans }}</a>
                     </div>
+                    <div class="nav-item {% if 'stats' in app.current_route %}selected{% endif %}">
+                        <a href="{{ path('app_stats') }}">{{ 'base.stats'|trans }}</a>
+                    </div>
+                    <div class="nav-item {% if 'resources' in app.current_route %}selected{% endif %}">
+                        <a href="{{ path('app_resources') }}">{{ 'base.resources'|trans }}</a>
+                    </div>
                     {% if app.user %}
                         {% if app.user.gameProfile == null or app.user.gameProfile.game == null %}
                             <div class="nav-item">

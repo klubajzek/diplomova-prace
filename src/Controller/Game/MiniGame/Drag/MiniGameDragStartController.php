@@ -79,7 +79,7 @@ class MiniGameDragStartController extends AbstractController
 
 
         return $this->render('frontend/game/miniGame/drag/detail.html.twig', [
-            'helpText' => 'Vytvořte správně příklady.',
+            'helpText' => 'V této hře jde o vytváření příkladů, vždy je třeba přesunout položky z levé strany vpravo a z nich poté skládat příklady. Ale pozor, po vyplnění všech zelených polí dojde ke kontrole a poté se všechny položky ztratí. Za každý správně složený příklad získáš 1 surovinu. Pokud už nevidíš žádný další možný příklad, který by šel složit, stačí kliknout na tlačítko přejít na výsledky. Souhrné výsledky nalezneš po dokončení hry.',
             'helpTitle' => 'Přetahovací hra',
             'game' => $game,
             'dragItemParts' => $dragItemParts,

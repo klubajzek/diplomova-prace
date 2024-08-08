@@ -21,7 +21,7 @@ class GameMapController extends AbstractController
 
         return $this->render('frontend/game/map/map.html.twig', [
             'game' => $game,
-            'helpText' => 'Vyberte minihru, kterou chcete hrát.',
+            'helpText' => 'Na mapě si můžete vybrat minihru o surovinu kterou chcete získat. Stačí jen kliknout na ikonu minihry a vyčkat na načtení minihry. Pokud Vás zajíma jiný hrač, který je na stejné mapě, můžete kliknout na jeho vesnici a vidět informace o tomto hráči.',
             'helpTitle' => 'Mapa',
         ]);
     }

@@ -71,16 +71,21 @@ class MiniGameDragEndController extends AbstractController
                 ->setMistakes($countMistakes)
                 ->setCorrectAnswers($countCorrects)
                 ->setNotFilled(3 - $countMistakes - $countCorrects);
+            $gameProfile = $user->getGameProfile();
+            $gameProfile->setTotalMistakes($gameProfile->getTotalMistakes() + $countMistakes);
+            $gameProfile->setTotalCorrectAnswers($gameProfile->getTotalCorrectAnswers() + $countCorrects);
+            $gameProfile->setTotalFilled($gameProfile->getTotalFilled() + (3 - $countMistakes - $countCorrects));
+            $gameProfile->setTotalScore($gameProfile->getTotalCorrectAnswers() > 0 ? round($gameProfile->getTotalCorrectAnswers() / ($gameProfile->getTotalMistakes() + $gameProfile->getTotalCorrectAnswers() + $gameProfile->getTotalFilled()), 2) : 0);
             $value = $countCorrects;
             switch ($matchResult->getResource()) {
                 case 'food':
-                    $user->getGameProfile()->setFood($user->getGameProfile()->getFood() + $value);
+                    $gameProfile->setFood($gameProfile->getFood() + $value);
                     break;
                 case 'wood':
-                    $user->getGameProfile()->setWood($user->getGameProfile()->getWood() + $value);
+                    $gameProfile->setWood($gameProfile->getWood() + $value);
                     break;
                 case 'stone':
-                    $user->getGameProfile()->setStone($user->getGameProfile()->getStone() + $value);
+                    $gameProfile->setStone($gameProfile->getStone() + $value);
                     break;
             }
         }

@@ -75,9 +75,16 @@ class GameTypeSelectionController extends AbstractController
             }
         }
 
+        $showStartModal = !isset($_COOKIE['showStartModal']);
+
+        if ($showStartModal) {
+            setcookie('showStartModal', '', time() - 3600, '/');
+        }
+
         return $this->render('frontend/game/start/start.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
+            'showStartModal' => $showStartModal
         ]);
     }
 }

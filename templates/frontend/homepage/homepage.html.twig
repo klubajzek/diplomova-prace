@@ -14,11 +14,15 @@
                     Aplikace je určena pro studenty, kteří si chtějí procvičit své znalosti zábavnou formou. Tato aplikace je určena pro děti ve věku 6-8 let.<br>
                     Aplikace je vytvořena v programovacím jazyce PHP s využitím frameworku Symfony. Aplikace je dostupná na adrese: <a href="{{ path('app_homepage') }}">{{ absolute_url(path('app_homepage')) }}</a>.
                     {% if app.user %}
-                        <div class="mt-5 text-center">
-                            <a class="btn btn-primary btn-big" href="{{ path('app_game_select_type') }}">
-                                {{ 'base.game'|trans }}
-                            </a>
-                        </div>
+                        {% if app.user.gameProfile == null or app.user.gameProfile.game == null %}
+                            <div class="mt-5 text-center">
+                                <a class="btn btn-primary text-center btn-big" href="{{ path('app_game_select_type') }}">{{ 'base.game'|trans }}</a>
+                            </div>
+                        {% else %}
+                            <div class="mt-5 text-center">
+                                <a class="btn btn-primary text-center btn-big" href="{{ path('app_game_map', {"id": app.user.gameProfile.game.id}) }}">{{ 'base.game'|trans }}</a>
+                            </div>
+                        {% endif %}
                     {% else %}
                         <div class="mt-5 text-center">
                             <a class="btn btn-primary text-center btn-big" href="{{ path('app_login') }}">

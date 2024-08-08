@@ -93,7 +93,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   z-index: -1;
@@ -195,7 +195,7 @@
   background-position: center;
   z-index: -1;
   left: 49%;
-  top: 70%;
+  top: 50%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .wood:hover {
@@ -483,6 +483,9 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
+}
+.background-map__custom {
+  height: 100%;
 }
 .background-map::before {
   content: "";
@@ -811,14 +814,14 @@ header {
 .navigation {
   display: flex;
   flex-direction: row;
-  gap: 2rem;
+  gap: 1rem;
 }
 .navigation--right {
   margin-left: auto !important;
 }
 .navigation .nav-item a {
   text-decoration: none;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   color: black;
 }
 .navigation .nav-item a:hover {
@@ -889,6 +892,10 @@ header {
   align-items: center;
   margin: 2rem 0;
   border-bottom: 1px solid black;
+}
+
+.swal2-popup {
+  width: 50rem !important;
 }
 
 /*# sourceMappingURL=global.css.map */

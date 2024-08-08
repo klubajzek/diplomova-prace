@@ -3,10 +3,10 @@
 {% block title %}{{ 'game.start.title'|trans }}{% endblock %}
 
 {% block body %}
-    <div class="background-map">
+    <div class="background-map background-map__custom">
         <div class="container">
             <div class="form">
-                <h2 class="text-center mb-4">{{ 'game.start.selectTitle'|trans }}</h2>
+                <h2 class="text-center mb-4 mt-4">{{ 'game.start.selectTitle'|trans }}</h2>
                 <div class="form-text">
                     {{ 'game.start.selectInfo'|trans }}
                 </div>
@@ -63,6 +63,7 @@
 
 {% block javascripts %}
     {{ parent() }}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script type="text/javascript">
         jQuery(document).ready(function ($) {
@@ -74,6 +75,18 @@
                 console.log(form);
                 form.submit();
             });
+
+            {% if showStartModal %}
+
+                document.cookie = 'showStartModal' + "=" + true + ";" + 2592000000 + ";path=/";
+                Swal.fire({
+                    title: 'Příběh hry',
+                    html: `{{ 'game.start.story'|trans|raw }}`,
+                    showCloseButton: true,
+                    focusConfirm: false,
+                    confirmButtonText: 'Dobře',
+                });
+            {% endif %}
         });
     </script>
 {% endblock %}

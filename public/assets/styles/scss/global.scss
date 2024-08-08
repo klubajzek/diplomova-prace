@@ -32,7 +32,7 @@ header {
 .navigation {
   display: flex;
   flex-direction: row;
-  gap: 2rem;
+  gap: 1rem;
 
   &--right {
     margin-left: auto !important;
@@ -41,7 +41,7 @@ header {
   .nav-item {
     a {
       text-decoration: none;
-      font-size: 1.6rem;
+      font-size: 1.2rem;
       color: tokens.$color-font-base;
 
       &:hover {
@@ -138,4 +138,8 @@ header {
     margin: 2rem 0;
     border-bottom: 1px solid tokens.$color-font-base;
   }
+}
+
+.swal2-popup {
+  width: 50rem !important;
 }

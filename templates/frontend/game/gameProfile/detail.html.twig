@@ -5,7 +5,7 @@
 {% block body %}
     <section class="background-map game-profile">
         <div class="container">
-            <h1 class="h1 mb-3">{{ 'game.gameProfile'|trans }} - {{ app.user.nickname }}</h1>
+            <h1 class="h1 mb-3">{{ 'game.gameProfile'|trans }} - {{ user.nickname }}</h1>
             <div class="game-profile__parent">
                 <div class="col">
                     <h2>Celkové statistiky</h2>
@@ -35,65 +35,69 @@
                                 <td>Odehráno přetahovaček:</td>
                                 <td>{{ statsDrag['total'] }}</td>
                             </tr>
-                            <tr>
-                                <td>Místo v globálním žebříčku:</td>
-                                <td>1.</td>
-                            </tr>
+                            {% if user.gameProfile.totalScore > 0 and rank > 0 %}
+                                <tr>
+                                    <td>Místo v globálním žebříčku:</td>
+                                    <td>{{ rank }}.</td>
+                                </tr>
+                            {% endif %}
                         </tbody>
                     </table>
                 </div>
 
-                <h2>Odehrané spojovačky</h2>
-                <div class="col">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Datum</th>
-                                <th>Počet správných odpovědí</th>
-                                <th>Počet chyb</th>
-                                <th>Počet nevyplněných</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for match in miniGameMatches %}
+                {% if app.user.id == user.id %}
+                    <h2>Odehrané spojovačky</h2>
+                    <div class="col">
+                        <table>
+                            <thead>
                                 <tr>
-                                    <td>{{ match.createdAt|date('d.m.Y') }}</td>
-                                    <td>{{ match.correctAnswers ?? 0 }}</td>
-                                    <td>{{ match.mistakes ?? 0 }}</td>
-                                    <td>{{ match.notFilled ?? 0 }}</td>
-                                    <td><a href="{{ path('app_game_mini_game_match_result', {'id': game.id, 'miniGameId': match.id}) }}">Detail</a></td>
+                                    <th>Datum</th>
+                                    <th>Počet správných odpovědí</th>
+                                    <th>Počet chyb</th>
+                                    <th>Počet nevyplněných</th>
+                                    <th></th>
                                 </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
+                            </thead>
+                            <tbody>
+                                {% for match in miniGameMatches %}
+                                    <tr>
+                                        <td>{{ match.createdAt|date('d.m.Y') }}</td>
+                                        <td>{{ match.correctAnswers ?? 0 }}</td>
+                                        <td>{{ match.mistakes ?? 0 }}</td>
+                                        <td>{{ match.notFilled ?? 0 }}</td>
+                                        <td><a href="{{ path('app_game_mini_game_match_result', {'id': game.id, 'miniGameId': match.id}) }}">Detail</a></td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
 
-                <h2>Odehrané přetahovačky</h2>
-                <div class="col">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Datum</th>
-                                <th>Počet správných odpovědí</th>
-                                <th>Počet chyb</th>
-                                <th>Počet nevyplněných</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for drag in miniGameDrags %}
+                    <h2>Odehrané přetahovačky</h2>
+                    <div class="col">
+                        <table>
+                            <thead>
                                 <tr>
-                                    <td>{{ drag.createdAt|date('d.m.Y') }}</td>
-                                    <td>{{ match.correctAnswers ?? 0 }}</td>
-                                    <td>{{ drag.mistakes ?? 0 }}</td>
-                                    <td>{{ drag.notFilled ?? 0 }}</td>
-                                    <td><a href="{{ path('app_game_mini_game_drag_result', {'id': game.id, 'miniGameId': drag.id}) }}">Detail</a></td>
+                                    <th>Datum</th>
+                                    <th>Počet správných odpovědí</th>
+                                    <th>Počet chyb</th>
+                                    <th>Počet nevyplněných</th>
+                                    <th></th>
                                 </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
+                            </thead>
+                            <tbody>
+                                {% for drag in miniGameDrags %}
+                                    <tr>
+                                        <td>{{ drag.createdAt|date('d.m.Y') }}</td>
+                                        <td>{{ match.correctAnswers ?? 0 }}</td>
+                                        <td>{{ drag.mistakes ?? 0 }}</td>
+                                        <td>{{ drag.notFilled ?? 0 }}</td>
+                                        <td><a href="{{ path('app_game_mini_game_drag_result', {'id': game.id, 'miniGameId': drag.id}) }}">Detail</a></td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% endif %}
 
             </div>
         </div>

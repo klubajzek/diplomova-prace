@@ -28,7 +28,7 @@ class MiniGameSelectController extends AbstractController
             'game' => $game,
             'type' => $request->get('type'),
             'showBackToMap' => true,
-            'helpText' => 'Vyber si minihru, kterou chceš hrát.',
+            'helpText' => 'Zde si můžete vybrat minihru, kterou chcete hrát, stačí kliknout na tlačítko vybrat minihru. Pozor, za každou minihru, která není o jídlo se platí 1 jídlo.',
             'helpTitle' => 'Vyber minihru',
             'resource' => $request->get('resource'),
         ]);

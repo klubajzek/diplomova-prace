@@ -45,6 +45,24 @@ class GameProfile
     #[ORM\OneToMany(mappedBy: 'gameProfile', targetEntity: GameProfileBuilding::class)]
     private Collection $gameProfileBuildings;
 
+    #[ORM\Column(nullable: true)]
+    private ?bool $hideMatchHelpModal = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?bool $hideDragHelpModal = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $totalMistakes = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $totalCorrectAnswers = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $totalFilled = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $totalScore = null;
+
     public function __construct()
     {
         $this->miniGameMatchResults = new ArrayCollection();
@@ -210,6 +228,78 @@ class GameProfile
                 $gameProfileBuilding->setGameProfile(null);
             }
         }
+
+        return $this;
+    }
+
+    public function isHideMatchHelpModal(): ?bool
+    {
+        return $this->hideMatchHelpModal;
+    }
+
+    public function setHideMatchHelpModal(?bool $hideMatchHelpModal): static
+    {
+        $this->hideMatchHelpModal = $hideMatchHelpModal;
+
+        return $this;
+    }
+
+    public function isHideDragHelpModal(): ?bool
+    {
+        return $this->hideDragHelpModal;
+    }
+
+    public function setHideDragHelpModal(?bool $hideDragHelpModal): static
+    {
+        $this->hideDragHelpModal = $hideDragHelpModal;
+
+        return $this;
+    }
+
+    public function getTotalMistakes(): ?string
+    {
+        return $this->totalMistakes;
+    }
+
+    public function setTotalMistakes(?string $totalMistakes): static
+    {
+        $this->totalMistakes = $totalMistakes;
+
+        return $this;
+    }
+
+    public function getTotalCorrectAnswers(): ?string
+    {
+        return $this->totalCorrectAnswers;
+    }
+
+    public function setTotalCorrectAnswers(?string $totalCorrectAnswers): static
+    {
+        $this->totalCorrectAnswers = $totalCorrectAnswers;
+
+        return $this;
+    }
+
+    public function getTotalFilled(): ?string
+    {
+        return $this->totalFilled;
+    }
+
+    public function setTotalFilled(?string $totalFilled): static
+    {
+        $this->totalFilled = $totalFilled;
+
+        return $this;
+    }
+
+    public function getTotalScore(): ?string
+    {
+        return $this->totalScore;
+    }
+
+    public function setTotalScore(?string $totalScore): static
+    {
+        $this->totalScore = $totalScore;
 
         return $this;
     }

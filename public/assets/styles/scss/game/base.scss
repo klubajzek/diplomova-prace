@@ -99,6 +99,10 @@
   justify-content: center;
   height: 100vh;
 
+  &__custom {
+    height: 100%
+  }
+
   &::before {
     content: "";
     background-image: url(../../images/map/mapa-16-9.png);

@@ -22,9 +22,18 @@ class GameMapInitializationController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
+        $gameProfiles = $game->getGameProfiles();
+        $positions = [];
+        if ($gameProfiles->count() > 0) {
+            foreach ($gameProfiles as $gameProfile) {
+                $positions[$gameProfile->getPosition()] = $gameProfile->getPosition();
+            }
+        }
+
         return $this->render('frontend/game/start/map.html.twig', [
             'user' => $user,
-            'game' => $game
+            'game' => $game,
+            'positions' => $positions,
         ]);
     }
 }

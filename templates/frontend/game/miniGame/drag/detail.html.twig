@@ -34,4 +34,33 @@
     {{ parent() }}
 
     <script src="{{ asset('assets/js/miniGame/drag.js') }}?v={{ filemtime('assets/js/miniGame/drag.js') }}"></script>
+
+    {% if not app.user.gameProfile.hideDragHelpModal %}
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        <script type="text/javascript">
+            jQuery(document).ready(function() {
+                Swal.fire({
+                    title: '{{ helpTitle}}',
+                    html: `{{ helpText }}`,
+                    showCloseButton: true,
+                    showCancelButton: true,
+                    focusConfirm: false,
+                    confirmButtonText: 'Dobře',
+                    cancelButtonText: 'Již nezobrazovat'
+                }).then(function(response){
+
+                    if(response.dismiss === 'cancel') {
+                        $.ajax({
+                            url: '{{ path('app_game_mini_game_modal_hide', {'id': game.id, 'type': 'drag'}) }}',
+                            type: 'POST',
+                            data: {},
+                            success: function () {
+                            }
+                        });
+                    }
+                });
+            });
+        </script>
+    {% endif %}
 {% endblock %}

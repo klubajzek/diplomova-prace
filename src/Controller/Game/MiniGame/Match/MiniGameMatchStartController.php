@@ -61,7 +61,7 @@ public function __invoke(Request $request, Game $game): Response
 
     return $this->render('frontend/game/miniGame/match/detail.html.twig', [
         'answers' => $answers,
-        'helpText' => 'Přiřaď správně odpovědi k otázkám.',
+        'helpText' => 'V této hře jde o to, aby jsi propojil správně příklad s odpovědí. Stačí kliknout na příklad a poté na odpověď, která si myslíš, že by to mohla být. Podle správnosti se zbarví pozadí odpovědi a po chvilce zmízí. Za každé 3 správné odpovědi získáš danou surovinu. Souhrné výsledky nalezneš po dokončení hry.',
         'helpTitle' => 'Spojovací hra',
         'miniGame' => $miniGame,
         'game' => $game,
