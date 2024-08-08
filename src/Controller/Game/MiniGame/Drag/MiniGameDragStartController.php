@@ -83,6 +83,7 @@ class MiniGameDragStartController extends AbstractController
             'helpTitle' => 'Přetahovací hra',
             'game' => $game,
             'dragItemParts' => $dragItemParts,
+            'miniGame' => $miniGame,
         ]);
     }
 }

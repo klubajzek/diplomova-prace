@@ -2,6 +2,7 @@
 
 namespace App\Repository\MiniGames\Match;
 
+use App\Entity\Game\GameProfile;
 use App\Entity\MiniGames\Match\MiniGameMatchResult;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -21,20 +22,17 @@ class MiniGameMatchResultRepository extends ServiceEntityRepository
         parent::__construct($registry, MiniGameMatchResult::class);
     }
 
-//    /**
-//     * @return MiniGameMatchResult[] Returns an array of MiniGameMatchResult objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('m')
-//            ->andWhere('m.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('m.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    public function getGameProfileStats(GameProfile $gameProfile): array
+    {
+        return $this->createQueryBuilder('m')
+            ->select('SUM(m.mistakes) as mistakes, COUNT(m.id) as total, SUM(m.correctAnswers) as correctAnswers, sum(m.notFilled) as notFilled')
+            ->andWhere('m.gameProfile = :profile')
+            ->setParameter('profile', $gameProfile)
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
 
 //    public function findOneBySomeField($value): ?MiniGameMatchResult
 //    {

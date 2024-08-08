@@ -45,10 +45,13 @@ game:
   backToMap: 'Zpět na mapu'
   villageDetail:
     buildingPosition: Postavit budovu
+    mainBuilding: 'Hlavní budova'
+    house: 'Dům'
+    barn: 'Stodola'
     building:
-      main: 'Hlavní budova'
-      house: 'Dům'
-      barn: 'Stodola'
+      main: 'Hlavní budova -> Cena: 5 kamenů, 5 dřeva'
+      house: 'Dům -> Cena: 1 kámen, 2 dřeva'
+      barn: 'Stodola -> Cena: 2 kameny, 3 dřeva'
   villageOf: Vesnice hráče nickname
   villageEnter: 'Vstoupit do vesnice'
   minigame:
@@ -101,6 +104,7 @@ miniGame:
     result: 'Výsledky spojovačky'
   drag:
     detail: 'Přetahovačka'
+    result: 'Výsledky přetahovačky'
 app:
   user: 'Uživatel'
 administration:

@@ -19,9 +19,19 @@ class VillageDetailController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
+        $buildingsEntity = $gameProfile->getGameProfileBuildings();
+        $buildings = [];
+
+        if ($buildingsEntity->count() > 0) {
+            foreach ($buildingsEntity as $building) {
+                $buildings[$building->getPosition()] = $building->getType();
+            }
+        }
+
         return $this->render('frontend/game/detail/detail.html.twig', [
             'gameProfile' => $gameProfile,
             'showBackToMap' => true,
+            'buildings' => $buildings,
             'helpTitle' => 'Vesnice',
             'helpText' => 'Ve vesnici můžete stavět budovy, které Vám umožní později postupovat dále příběhem. <br> 
                 Typy budov:<br>

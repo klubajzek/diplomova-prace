@@ -7,21 +7,28 @@
         <div class="detail-background"></div>
 
         <div class="village-building-menu">
-            <div class="village-building-item tippy" data-text="{{ 'game.villageDetail.building.main'|trans }}">
-                <img src="{{ asset('assets/images/main-building.png') }}" alt="{{ 'game.villageDetail.building.main'|trans }}">
+            <div class="village-building-item village-building-item__main-building tippy {% if gameProfile.stone < 5 or gameProfile.wood < 5 or buildings|length == 5 %}disabled{% endif %}" id="mainBuilding" {% if gameProfile.stone >= 5 and gameProfile.wood >= 5 and buildings|length < 5 %}draggable="true" ondragstart="dragstartHandler(event)"{% endif %} data-text="{{ 'game.villageDetail.building.main'|trans }}">
             </div>
-            <div class="village-building-item tippy" data-text="{{ 'game.villageDetail.building.house'|trans }}">
-                <img src="{{ asset('assets/images/house.png') }}" alt="{{ 'game.villageDetail.building.house'|trans }}">
+            <div class="village-building-item village-building-item__house tippy {% if gameProfile.stone < 1 or gameProfile.wood < 2 or buildings|length == 5 %}disabled{% endif %}" id="house" {% if gameProfile.stone >= 1 and gameProfile.wood >= 2 and buildings|length < 5 %}draggable="true" ondragstart="dragstartHandler(event)"{% endif %} data-text="{{ 'game.villageDetail.building.house'|trans }}">
             </div>
-            <div class="village-building-item tippy" data-text="{{ 'game.villageDetail.building.barn'|trans }}">
-                <img src="{{ asset('assets/images/barn.png') }}" alt="{{ 'game.villageDetail.building.barn'|trans }}">
+            <div class="village-building-item tippy village-building-item__barn {% if gameProfile.stone < 2 or gameProfile.wood < 3 or buildings|length == 5 %}disabled{% endif %}" id="barn" {% if gameProfile.stone >= 2 and gameProfile.wood >= 3 and buildings|length < 5 %}draggable="true" ondragstart="dragstartHandler(event)"{% endif %} data-text="{{ 'game.villageDetail.building.barn'|trans }}">
             </div>
         </div>
 
-        <div class="container" data-url="{{ path('create_new_game_profile', {'id': gameProfile.game.id}) }}">
+        <div class="container positions-container" data-url="{{ path('app_game_village_build', {'id': gameProfile.id}) }}">
             {% for item in 1..5 %}
-                <a class="building-position-{{ item }} building-position tippy" data-text="{{ 'game.villageDetail.buildingPosition'|trans }}" data-position="{{ item }}"></a>
+                {% if buildings[item] is defined %}
+                    <div class="building-position-{{ item }} tippy building-{{ buildings[item] }}" data-text="{{ ('game.villageDetail.' ~ buildings[item])|trans }}"></div>
+                {% else %}
+                    <div class="building-position-{{ item }} building-position tippy" id="building-position-{{ item }}" ondrop="dropHandler(event)" ondragover="dragoverHandler(event)" data-text="{{ 'game.villageDetail.buildingPosition'|trans }}" data-position="{{ item }}"></div>
+                {% endif %}
             {% endfor %}
         </div>
     </section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="{{ asset('assets/js/village.js') }}?v={{ filemtime('assets/js/village.js') }}"></script>
 {% endblock %}

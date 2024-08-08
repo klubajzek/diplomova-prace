@@ -14,13 +14,18 @@
                 </div>
 
                 <div class="col col-result">
-                    <div class="row result" id="dropZone1" ondrop="dropHandler(event)" ondragover="dragoverHandler(event)"></div>
-                    <div class="row result" id="dropZone2" ondrop="dropHandler(event)" ondragover="dragoverHandler(event)"></div>
-                    <div class="row result" id="dropZone3" ondrop="dropHandler(event)" ondragover="dragoverHandler(event)"></div>
+                    <div class="row result drop-zone" id="dropZone1" ondrop="dropHandler(event)" ondragover="dragoverHandler(event)"></div>
+                    <div class="row result drop-zone" id="dropZone2" ondrop="dropHandler(event)" ondragover="dragoverHandler(event)"></div>
+                    <div class="row result drop-zone" id="dropZone3" ondrop="dropHandler(event)" ondragover="dragoverHandler(event)"></div>
                     <div class="row result result-equals">=</div>
-                    <div class="row result" id="dropZone4" ondrop="dropHandler(event)" ondragover="dragoverHandler(event)"></div>
+                    <div class="row result drop-zone" id="dropZone4" ondrop="dropHandler(event)" ondragover="dragoverHandler(event)"></div>
                 </div>
             </div>
+
+            <div class="mt-lg-5 text-center">
+                <a href="javascript:finishGame('{{ path('app_game_mini_game_drag_end', {'id': game.id, 'miniGameId': miniGame.id}) }}')" class="btn btn-primary finish-game">Přejít na výsledky</a>
+            </div>
+
         </div>
     </section>
 {% endblock %}
@@ -28,5 +33,5 @@
 {% block javascripts %}
     {{ parent() }}
 
-    <script src="{{ asset('assets/js/miniGame/drag.js') }}"></script>
+    <script src="{{ asset('assets/js/miniGame/drag.js') }}?v={{ filemtime('assets/js/miniGame/drag.js') }}"></script>
 {% endblock %}

@@ -2,6 +2,7 @@
 
 namespace App\Entity\MiniGames\Drag;
 
+use App\Entity\Game\GameProfile;
 use App\Repository\MiniGames\Drag\MiniGameDragResultRepository;
 use App\Traits\MiniGame\MiniGameResultTrait;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -25,9 +26,21 @@ class MiniGameDragResult
     #[ORM\OneToMany(mappedBy: 'result', targetEntity: MiniGameDragResultItem::class)]
     private Collection $miniGameDragResultItems;
 
+    #[ORM\OneToMany(mappedBy: 'result', targetEntity: MiniGameDragResultItemMistake::class)]
+    private Collection $miniGameDragResultItemMistakes;
+
+    #[ORM\OneToMany(mappedBy: 'result', targetEntity: MiniGameDragResultItemCorrect::class)]
+    private Collection $miniGameDragResultItemCorrects;
+
+    #[ORM\ManyToOne(inversedBy: 'miniGameDragResults')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?GameProfile $gameProfile = null;
+
     public function __construct()
     {
         $this->miniGameDragResultItems = new ArrayCollection();
+        $this->miniGameDragResultItemMistakes = new ArrayCollection();
+        $this->miniGameDragResultItemCorrects = new ArrayCollection();
     }
 
     public function getResource(): ?string
@@ -92,6 +105,78 @@ class MiniGameDragResult
                 $miniGameDragResultItem->setResult(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, MiniGameDragResultItemMistake>
+     */
+    public function getMiniGameDragResultItemMistakes(): Collection
+    {
+        return $this->miniGameDragResultItemMistakes;
+    }
+
+    public function addMiniGameDragResultItemMistake(MiniGameDragResultItemMistake $miniGameDragResultItemMistake): static
+    {
+        if (!$this->miniGameDragResultItemMistakes->contains($miniGameDragResultItemMistake)) {
+            $this->miniGameDragResultItemMistakes->add($miniGameDragResultItemMistake);
+            $miniGameDragResultItemMistake->setResult($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMiniGameDragResultItemMistake(MiniGameDragResultItemMistake $miniGameDragResultItemMistake): static
+    {
+        if ($this->miniGameDragResultItemMistakes->removeElement($miniGameDragResultItemMistake)) {
+            // set the owning side to null (unless already changed)
+            if ($miniGameDragResultItemMistake->getResult() === $this) {
+                $miniGameDragResultItemMistake->setResult(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, MiniGameDragResultItemCorrect>
+     */
+    public function getMiniGameDragResultItemCorrects(): Collection
+    {
+        return $this->miniGameDragResultItemCorrects;
+    }
+
+    public function addMiniGameDragResultItemCorrect(MiniGameDragResultItemCorrect $miniGameDragResultItemCorrect): static
+    {
+        if (!$this->miniGameDragResultItemCorrects->contains($miniGameDragResultItemCorrect)) {
+            $this->miniGameDragResultItemCorrects->add($miniGameDragResultItemCorrect);
+            $miniGameDragResultItemCorrect->setResult($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMiniGameDragResultItemCorrect(MiniGameDragResultItemCorrect $miniGameDragResultItemCorrect): static
+    {
+        if ($this->miniGameDragResultItemCorrects->removeElement($miniGameDragResultItemCorrect)) {
+            // set the owning side to null (unless already changed)
+            if ($miniGameDragResultItemCorrect->getResult() === $this) {
+                $miniGameDragResultItemCorrect->setResult(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getGameProfile(): ?GameProfile
+    {
+        return $this->gameProfile;
+    }
+
+    public function setGameProfile(?GameProfile $gameProfile): static
+    {
+        $this->gameProfile = $gameProfile;
 
         return $this;
     }

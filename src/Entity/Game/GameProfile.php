@@ -2,6 +2,7 @@
 
 namespace App\Entity\Game;
 
+use App\Entity\MiniGames\Drag\MiniGameDragResult;
 use App\Entity\MiniGames\Match\MiniGameMatchResult;
 use App\Entity\User\User;
 use App\Repository\User\GameProfileRepository;
@@ -38,9 +39,17 @@ class GameProfile
     #[ORM\OneToMany(mappedBy: 'gameProfile', targetEntity: MiniGameMatchResult::class)]
     private Collection $miniGameMatchResults;
 
+    #[ORM\OneToMany(mappedBy: 'gameProfile', targetEntity: MiniGameDragResult::class)]
+    private Collection $miniGameDragResults;
+
+    #[ORM\OneToMany(mappedBy: 'gameProfile', targetEntity: GameProfileBuilding::class)]
+    private Collection $gameProfileBuildings;
+
     public function __construct()
     {
         $this->miniGameMatchResults = new ArrayCollection();
+        $this->miniGameDragResults = new ArrayCollection();
+        $this->gameProfileBuildings = new ArrayCollection();
     }
 
     public function getPosition(): ?int
@@ -139,6 +148,66 @@ class GameProfile
             // set the owning side to null (unless already changed)
             if ($miniGameMatchResult->getGameProfile() === $this) {
                 $miniGameMatchResult->setGameProfile(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, MiniGameDragResult>
+     */
+    public function getMiniGameDragResults(): Collection
+    {
+        return $this->miniGameDragResults;
+    }
+
+    public function addMiniGameDragResult(MiniGameDragResult $miniGameDragResult): static
+    {
+        if (!$this->miniGameDragResults->contains($miniGameDragResult)) {
+            $this->miniGameDragResults->add($miniGameDragResult);
+            $miniGameDragResult->setGameProfile($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMiniGameDragResult(MiniGameDragResult $miniGameDragResult): static
+    {
+        if ($this->miniGameDragResults->removeElement($miniGameDragResult)) {
+            // set the owning side to null (unless already changed)
+            if ($miniGameDragResult->getGameProfile() === $this) {
+                $miniGameDragResult->setGameProfile(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, GameProfileBuilding>
+     */
+    public function getGameProfileBuildings(): Collection
+    {
+        return $this->gameProfileBuildings;
+    }
+
+    public function addGameProfileBuilding(GameProfileBuilding $gameProfileBuilding): static
+    {
+        if (!$this->gameProfileBuildings->contains($gameProfileBuilding)) {
+            $this->gameProfileBuildings->add($gameProfileBuilding);
+            $gameProfileBuilding->setGameProfile($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGameProfileBuilding(GameProfileBuilding $gameProfileBuilding): static
+    {
+        if ($this->gameProfileBuildings->removeElement($gameProfileBuilding)) {
+            // set the owning side to null (unless already changed)
+            if ($gameProfileBuilding->getGameProfile() === $this) {
+                $gameProfileBuilding->setGameProfile(null);
             }
         }
 

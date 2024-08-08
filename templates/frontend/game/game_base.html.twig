@@ -66,7 +66,11 @@
             </div>
             <div class="nav-game tippy" data-text="{{ 'game.village'|trans }}">
                 <img src="{{ asset('assets/images/village.PNG') }}" alt="{{ 'game.village'|trans }}">
-                <span>{{ app.user.gameProfile.stone }}</span>
+                {% set people = 0 %}
+                {% for item in app.user.gameProfile.gameProfileBuildings %}
+                    {% set people = item.people + people %}
+                {% endfor %}
+                <span>{{ people }}</span>
             </div>
 
             <a href="{{ path('app_game_profile_detail', {'id': app.user.gameProfile.game.id}) }}" class="user-profile tippy" data-text="{{ 'game.gameProfile'|trans }}">

@@ -1,0 +1,75 @@
+{% extends 'frontend/game/game_base.html.twig' %}
+
+{% block title %}{{ 'miniGame.drag.result'|trans }}{% endblock %}
+
+{% block body %}
+    <section class="background-map game-profile">
+        <div class="container">
+            <h1 class="h1 mb-3">{{ 'miniGame.drag.result'|trans }}</h1>
+            <div class="game-profile__parent">
+                <h2>Statistiky</h2>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Zodpovězeno správně:</td>
+                            <td>{{ matchResult.correctAnswers }}</td>
+                        </tr>
+                        <tr>
+                            <td>Zodpovězeno špatně:</td>
+                            <td>{{ matchResult.mistakes }}</td>
+                        </tr>
+                        <tr>
+                            <td>Nezodpovězeno:</td>
+                            <td>{{ matchResult.notFilled }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h2>Počáteční odpovědi</h2>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Otázka</th>
+                        <th>Odpověď</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for result in matchResult.miniGameDragResultItems %}
+                        {% set item = result.dragItem %}
+                        <tr>
+                            <td>{{ item.firstPart }} {{ item.partBetween }} {{ item.secondPart }}</td>
+                            <td>{{ item.answer }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <h2>Vaše odpovědi</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Otázka</th>
+                            <th>Odpověď</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in matchResult.miniGameDragResultItemCorrects %}
+                            <tr class="correct">
+                                <td>{{ item.firstPart }} {{ item.betweenPart }} {{ item.secondPart }}</td>
+                                <td>{{ item.answer }}</td>
+                            </tr>
+                        {% endfor %}
+                        {% for item in matchResult.miniGameDragResultItemMistakes %}
+                            <tr class="mistake">
+                                <td>{{ item.firstPart }} {{ item.betweenPart }} {{ item.secondPart }}</td>
+                                <td>{{ item.answer }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <div class="d-flex mb-2" style="gap: 2rem">
+                    <div class="correct">Správná odpověď</div>
+                    <div class="mistake">Špatná odpověď</div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

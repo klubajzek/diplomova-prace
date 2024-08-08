@@ -3,6 +3,7 @@
 namespace App\Entity\MiniGames\Match;
 
 
+use App\Entity\Game\GameProfile;
 use App\Repository\MiniGames\Match\MiniGameMatchResultRepository;
 use App\Traits\MiniGame\MiniGameResultTrait;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -25,6 +26,9 @@ class MiniGameMatchResult
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $notFilled = null;
+
+    #[ORM\ManyToOne(inversedBy: 'miniGameMatchResults')]
+    private ?GameProfile $gameProfile = null;
 
     public function __construct()
     {
@@ -93,6 +97,18 @@ class MiniGameMatchResult
     public function setNotFilled(?string $notFilled): static
     {
         $this->notFilled = $notFilled;
+
+        return $this;
+    }
+
+    public function getGameProfile(): ?GameProfile
+    {
+        return $this->gameProfile;
+    }
+
+    public function setGameProfile(?GameProfile $gameProfile): static
+    {
+        $this->gameProfile = $gameProfile;
 
         return $this;
     }

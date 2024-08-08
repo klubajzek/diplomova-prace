@@ -52,7 +52,8 @@ class CreateGameProfileController extends AbstractController
         $gameProfile
             ->setPosition($position)
             ->setGame($game)
-            ->setUser($user);
+            ->setUser($user)
+            ->setCreatedAt(new \DateTimeImmutable());
 
         $this->entityManager->persist($gameProfile);
         $this->entityManager->flush();

@@ -81,8 +81,16 @@
         justify-content: center;
       }
 
-      .result {
+      .correct {
         background-color: lightgreen;
+      }
+
+      .mistake {
+        background-color: lightcoral;
+      }
+
+      .result {
+        background-color: lightseagreen;
         height: 6rem;
         width: 8rem;
         align-items: center;

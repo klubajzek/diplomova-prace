@@ -2,6 +2,7 @@
 
 namespace App\Repository\MiniGames\Drag;
 
+use App\Entity\Game\GameProfile;
 use App\Entity\MiniGames\Drag\MiniGameDragResult;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -19,6 +20,18 @@ class MiniGameDragResultRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, MiniGameDragResult::class);
+    }
+
+    public function getGameProfileStats(GameProfile $gameProfile): array
+    {
+        return $this->createQueryBuilder('d')
+            ->select('SUM(d.mistakes) as mistakes, COUNT(d.id) as total, SUM(d.correctAnswers) as correctAnswers, sum(d.notFilled) as notFilled')
+            ->andWhere('d.gameProfile = :profile')
+            ->setParameter('profile', $gameProfile)
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
     }
 
 //    /**

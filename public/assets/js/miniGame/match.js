@@ -101,7 +101,7 @@ jQuery(document).ready(function($) {
        setTimeout(function () {
            $('.question-row.result').fadeOut("slow");
            $('.answer-row.result').fadeOut("slow");
-       }, 500)
+       }, 500);
    }
 
    function finishGame() {
