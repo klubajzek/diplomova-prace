@@ -71,7 +71,7 @@ game:
     type:
       wood: dřevo
       stone: kámen
-      wheat: jídlo
+      food: jídlo
     select: 'Výběr minihry'
     selectMiniGame: Vybrat minihru
     match: 'Spojovačka'

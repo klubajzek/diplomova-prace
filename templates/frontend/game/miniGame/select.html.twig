@@ -13,7 +13,7 @@
                 <div class="mini-game-item">
                     <h2 class="mini-game-item__title">{{ 'game.miniGame.match'|trans }}</h2>
                     <div class="mini-game-item__description">{{ 'game.miniGame.matchDescription'|trans }}
-                        1 {{ ('game.miniGame.type.' ~ type)|trans }}.
+                        1 {{ ('game.miniGame.type.' ~ resource)|trans }}.
                     </div>
                     <a href="{{ path('app_game_mini_game_match_start', {'id': game.id, 'resource': resource}) }}"
                        class="btn btn-primary mt-2 mb-2">{{ 'game.miniGame.selectMiniGame'|trans }}</a>
@@ -28,7 +28,7 @@
                 <div class="mini-game-item">
                     <h2 class="mini-game-item__title">{{ 'game.miniGame.drag'|trans }}</h2>
                     <div class="mini-game-item__description">{{ 'game.miniGame.dragDescription'|trans }}
-                        1 {{ ('game.miniGame.type.' ~ type)|trans }}.
+                        1 {{ ('game.miniGame.type.' ~ resource)|trans }}.
                     </div>
                     <a href="{{ path('app_game_mini_game_drag_start', {'id': game.id, 'resource': resource}) }}"
                        class="btn btn-primary mt-2 mb-2">{{ 'game.miniGame.selectMiniGame'|trans }}</a>
