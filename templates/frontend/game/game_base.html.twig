@@ -44,6 +44,25 @@
                 });
             </script>
         {% endif %}
+
+        <script type="text/javascript">
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    Swal.fire({
+                    icon: '{{ label }}',
+                    title: '{{ message }}'
+                    });
+                {% endfor %}
+            {% endfor %}
+        </script>
+
+        {% if noFood is defined and noFood %}
+        <script type="text/javascript">
+            jQuery(document).ready(function () {
+                alert('Nemáte dostatek jídla pro zahájení minihry!')
+            });
+        </script>
+        {% endif %}
     {% endblock %}
 </head>
 {% if app.user.gameProfile != null %}
@@ -65,7 +84,7 @@
                 <span>{{ app.user.gameProfile.stone }}</span>
             </div>
             <div class="nav-game tippy" data-text="{{ 'game.village'|trans }}">
-                <img src="{{ asset('assets/images/village.PNG') }}" alt="{{ 'game.village'|trans }}">
+                <img src="{{ asset('assets/images/village.png') }}" alt="{{ 'game.village'|trans }}">
                 {% set people = 0 %}
                 {% for item in app.user.gameProfile.gameProfileBuildings %}
                     {% set people = item.people + people %}
@@ -74,12 +93,12 @@
             </div>
 
             <a href="{{ path('app_game_profile_detail', {'id': app.user.gameProfile.game.id, 'profileId': app.user.gameProfile.id}) }}" class="user-profile tippy" data-text="{{ 'game.gameProfile'|trans }}">
-                <img src="{{ asset('assets/images/user.PNG') }}" alt="{{ 'game.gameProfile'|trans }}">
+                <img src="{{ asset('assets/images/user.png') }}" alt="{{ 'game.gameProfile'|trans }}">
             </a>
 
             {% if helpTitle is defined and helpText is defined %}
                 <div class="game-info tippy" data-text="{{ 'game.info'|trans }}">
-                    <img src="{{ asset('assets/images/info.PNG') }}" alt="{{ 'game.info'|trans }}">
+                    <img src="{{ asset('assets/images/info.png') }}" alt="{{ 'game.info'|trans }}">
                 </div>
             {% endif %}
         </div>

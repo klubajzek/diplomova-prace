@@ -4,6 +4,7 @@ namespace App\Controller\Registration;
 
 use App\Entity\User\User;
 use App\Form\RegistrationFormType;
+use App\Model\Roles;
 use App\Repository\User\UserRepository;
 use App\Security\EmailVerifier;
 use App\Security\LoginFormAuthenticator;
@@ -15,6 +16,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Role\Role;
 use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
@@ -41,6 +43,8 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
+
+            $user->setRoles([Roles::ROLE_USER->name]);
 
             $entityManager->persist($user);
             $entityManager->flush();
